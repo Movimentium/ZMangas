@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct DTOManga {
+    
+}
+
+struct DTOMetaData {
+    let total: Int 
+    let page: Int
+    let per: Int
+}
+
+

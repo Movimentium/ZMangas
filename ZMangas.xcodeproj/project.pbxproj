@@ -12,6 +12,11 @@
 		0C57D0592B716F1200181AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C57D0582B716F1200181AAD /* Assets.xcassets */; };
 		0C57D05C2B716F1200181AAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C57D05B2B716F1200181AAD /* Preview Assets.xcassets */; };
 		0C805F502B7170D7007816FA /* DTOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F4F2B7170D7007816FA /* DTOModel.swift */; };
+		0C805F542B7174AE007816FA /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F532B7174AE007816FA /* URL.swift */; };
+		0C805F562B718CF8007816FA /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F552B718CF8007816FA /* URLRequest.swift */; };
+		0C805F582B718D93007816FA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F572B718D93007816FA /* NetworkError.swift */; };
+		0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F592B718DD5007816FA /* URLSession.swift */; };
+		0C805F5D2B718E4F007816FA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F5C2B718E4F007816FA /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		0C57D0582B716F1200181AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C57D05B2B716F1200181AAD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C805F4F2B7170D7007816FA /* DTOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOModel.swift; sourceTree = "<group>"; };
+		0C805F532B7174AE007816FA /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		0C805F552B718CF8007816FA /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		0C805F572B718D93007816FA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0C805F592B718DD5007816FA /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		0C805F5C2B718E4F007816FA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,8 @@
 			children = (
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C57D0562B716F1000181AAD /* ContentView.swift */,
+				0C805F5B2B718E1F007816FA /* Interactor */,
+				0C805F522B717470007816FA /* Interface */,
 				0C805F4E2B7170BD007816FA /* Model */,
 				0C57D0582B716F1200181AAD /* Assets.xcassets */,
 				0C57D05A2B716F1200181AAD /* Preview Content */,
@@ -76,6 +88,25 @@
 				0C805F4F2B7170D7007816FA /* DTOModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		0C805F522B717470007816FA /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0C805F532B7174AE007816FA /* URL.swift */,
+				0C805F552B718CF8007816FA /* URLRequest.swift */,
+				0C805F592B718DD5007816FA /* URLSession.swift */,
+				0C805F572B718D93007816FA /* NetworkError.swift */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		0C805F5B2B718E1F007816FA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0C805F5C2B718E4F007816FA /* Network.swift */,
+			);
+			name = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C805F502B7170D7007816FA /* DTOModel.swift in Sources */,
+				0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */,
+				0C805F5D2B718E4F007816FA /* Network.swift in Sources */,
 				0C57D0572B716F1000181AAD /* ContentView.swift in Sources */,
 				0C57D0552B716F1000181AAD /* ZMangasApp.swift in Sources */,
+				0C805F582B718D93007816FA /* NetworkError.swift in Sources */,
+				0C805F542B7174AE007816FA /* URL.swift in Sources */,
+				0C805F562B718CF8007816FA /* URLRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
