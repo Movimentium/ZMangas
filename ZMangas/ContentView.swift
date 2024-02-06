@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var vm = MangasVM()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(vm.mangas) { manga in
+            Text(manga.title)
         }
-        .padding()
     }
 }
 

@@ -17,6 +17,9 @@
 		0C805F582B718D93007816FA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F572B718D93007816FA /* NetworkError.swift */; };
 		0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F592B718DD5007816FA /* URLSession.swift */; };
 		0C805F5D2B718E4F007816FA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F5C2B718E4F007816FA /* Network.swift */; };
+		0C805F5F2B719FD7007816FA /* Mangas 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C805F5E2B719FD7007816FA /* Mangas 2.json */; };
+		0C805F612B71A65D007816FA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F602B71A65D007816FA /* Model.swift */; };
+		0C805F642B71A6BA007816FA /* MangasVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F632B71A6BA007816FA /* MangasVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		0C805F572B718D93007816FA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0C805F592B718DD5007816FA /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		0C805F5C2B718E4F007816FA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		0C805F5E2B719FD7007816FA /* Mangas 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Mangas 2.json"; sourceTree = "<group>"; };
+		0C805F602B71A65D007816FA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0C805F632B71A6BA007816FA /* MangasVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 			children = (
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C57D0562B716F1000181AAD /* ContentView.swift */,
+				0C805F622B71A6A3007816FA /* ViewModel */,
 				0C805F5B2B718E1F007816FA /* Interactor */,
 				0C805F522B717470007816FA /* Interface */,
 				0C805F4E2B7170BD007816FA /* Model */,
@@ -77,6 +84,7 @@
 		0C57D05A2B716F1200181AAD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				0C805F5E2B719FD7007816FA /* Mangas 2.json */,
 				0C57D05B2B716F1200181AAD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -85,6 +93,7 @@
 		0C805F4E2B7170BD007816FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C805F602B71A65D007816FA /* Model.swift */,
 				0C805F4F2B7170D7007816FA /* DTOModel.swift */,
 			);
 			name = Model;
@@ -107,6 +116,14 @@
 				0C805F5C2B718E4F007816FA /* Network.swift */,
 			);
 			name = Interactor;
+			sourceTree = "<group>";
+		};
+		0C805F622B71A6A3007816FA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0C805F632B71A6BA007816FA /* MangasVM.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C57D05C2B716F1200181AAD /* Preview Assets.xcassets in Resources */,
+				0C805F5F2B719FD7007816FA /* Mangas 2.json in Resources */,
 				0C57D0592B716F1200181AAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C805F612B71A65D007816FA /* Model.swift in Sources */,
 				0C805F502B7170D7007816FA /* DTOModel.swift in Sources */,
 				0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */,
 				0C805F5D2B718E4F007816FA /* Network.swift in Sources */,
@@ -187,6 +206,7 @@
 				0C805F582B718D93007816FA /* NetworkError.swift in Sources */,
 				0C805F542B7174AE007816FA /* URL.swift in Sources */,
 				0C805F562B718CF8007816FA /* URLRequest.swift in Sources */,
+				0C805F642B71A6BA007816FA /* MangasVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

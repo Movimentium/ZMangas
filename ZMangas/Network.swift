@@ -8,6 +8,7 @@
 import Foundation
 
 protocol DataInteractor {
+    func getMangaPage() async throws -> MangaPage
 //    func getEmpleados() async throws -> [Empleado]
 //    func updateEmpleado(empleado: Empleado) async throws
 }
@@ -35,6 +36,9 @@ struct Network: DataInteractor {
     }
     
     // MARK: - DataInteractor methods
+    func getMangaPage() async throws -> MangaPage {
+        try await getJSON(request: .get(url: .mangas(page: 1, per: 40)), type: MangaPage.self)
+    }
     
 //    func getEmpleados() async throws -> [Empleado] {
 //        try await getJSON(request: .get(url: .getEmpleados), type: [DTOEmpleado].self).map(\.toEmpleado)
