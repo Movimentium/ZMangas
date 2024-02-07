@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C5189632B73D2C100D7E0EA /* TestMangaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */; };
 		0C57D0552B716F1000181AAD /* ZMangasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57D0542B716F1000181AAD /* ZMangasApp.swift */; };
 		0C57D0572B716F1000181AAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57D0562B716F1000181AAD /* ContentView.swift */; };
 		0C57D0592B716F1200181AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C57D0582B716F1200181AAD /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMangaDetail.swift; sourceTree = "<group>"; };
 		0C57D0512B716F1000181AAD /* ZMangas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMangas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C57D0542B716F1000181AAD /* ZMangasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZMangasApp.swift; sourceTree = "<group>"; };
 		0C57D0562B716F1000181AAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C57D0562B716F1000181AAD /* ContentView.swift */,
+				0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */,
 				0C805F622B71A6A3007816FA /* ViewModel */,
 				0C805F5B2B718E1F007816FA /* Interactor */,
 				0C805F522B717470007816FA /* Interface */,
@@ -206,6 +209,7 @@
 				0C805F582B718D93007816FA /* NetworkError.swift in Sources */,
 				0C805F542B7174AE007816FA /* URL.swift in Sources */,
 				0C805F562B718CF8007816FA /* URLRequest.swift in Sources */,
+				0C5189632B73D2C100D7E0EA /* TestMangaDetail.swift in Sources */,
 				0C805F642B71A6BA007816FA /* MangasVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

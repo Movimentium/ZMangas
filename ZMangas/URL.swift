@@ -10,6 +10,7 @@ import Foundation
 let api = URL(string: "https://mymanga-acacademy-5607149ebe3d.herokuapp.com/")!
 
 extension URL {
+    private static let per = 50 //TODO:
     static let mangas = api.appending(path: "list/mangas")
     static let bestMangas = api.appending(path: "list/bestMangas")
     static let authors = api.appending(path: "list/authors")

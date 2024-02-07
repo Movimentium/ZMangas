@@ -33,33 +33,33 @@ struct Manga: Codable, Identifiable {
 
     let sypnosis: String
     let background: String?
-//    let mainPicture: URL?
-//    let url: URL
+    let mainPicture: URL?
+    let url: URL?
 
-    let authors: [Authors]
-    let themes: [Themes]
-    let demographics: [Demographics]
-    let genres: [Genres]
+    let authors: [Author]
+    let themes: [Theme]
+    let demographics: [Demographic]
+    let genres: [Genre]
 }
 
-struct Authors: Codable {
+struct Author: Codable {
     let id: UUID
     let firstName: String
     let lastName: String
     let role: String
 }
 
-struct Themes: Codable {
+struct Theme: Codable {
     let id: UUID
     let theme: String
 }
 
-struct Demographics: Codable {
+struct Demographic: Codable {
     let id: UUID
     let demographic: String
 }
 
-struct Genres: Codable {
+struct Genre: Codable {
     let id: UUID
     let genre: String
 }
