@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C5189632B73D2C100D7E0EA /* TestMangaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */; };
+		0C5189662B73F25300D7E0EA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189652B73F25300D7E0EA /* TestView.swift */; };
 		0C57D0552B716F1000181AAD /* ZMangasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57D0542B716F1000181AAD /* ZMangasApp.swift */; };
 		0C57D0572B716F1000181AAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C57D0562B716F1000181AAD /* ContentView.swift */; };
 		0C57D0592B716F1200181AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C57D0582B716F1200181AAD /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMangaDetail.swift; sourceTree = "<group>"; };
+		0C5189652B73F25300D7E0EA /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		0C57D0512B716F1000181AAD /* ZMangas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMangas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C57D0542B716F1000181AAD /* ZMangasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZMangasApp.swift; sourceTree = "<group>"; };
 		0C57D0562B716F1000181AAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C5189642B73ECD500D7E0EA /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */,
+				0C5189652B73F25300D7E0EA /* TestView.swift */,
+			);
+			name = TestViews;
+			sourceTree = "<group>";
+		};
 		0C57D0482B716F1000181AAD = {
 			isa = PBXGroup;
 			children = (
@@ -73,7 +84,7 @@
 			children = (
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C57D0562B716F1000181AAD /* ContentView.swift */,
-				0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */,
+				0C5189642B73ECD500D7E0EA /* TestViews */,
 				0C805F622B71A6A3007816FA /* ViewModel */,
 				0C805F5B2B718E1F007816FA /* Interactor */,
 				0C805F522B717470007816FA /* Interface */,
@@ -200,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C5189662B73F25300D7E0EA /* TestView.swift in Sources */,
 				0C805F612B71A65D007816FA /* Model.swift in Sources */,
 				0C805F502B7170D7007816FA /* DTOModel.swift in Sources */,
 				0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */,

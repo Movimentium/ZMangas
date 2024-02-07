@@ -10,15 +10,16 @@ import Foundation
 let api = URL(string: "https://mymanga-acacademy-5607149ebe3d.herokuapp.com/")!
 
 extension URL {
-    private static let per = 50 //TODO:
+    static let per = 50 //REVIEW:
     static let mangas = api.appending(path: "list/mangas")
     static let bestMangas = api.appending(path: "list/bestMangas")
     static let authors = api.appending(path: "list/authors")
+    static let demographics = api.appending(path: "list/demographics")
     static let genres = api.appending(path: "list/genres")
     static let themes = api.appending(path: "list/themes")
 
-    static func mangas(page: Int? = nil, per: Int? = nil) -> URL {
-        Self.mangas.appendingPagingIfNeeded(page: page, per: per)
+    static func mangas(page: Int? = nil) -> URL {
+        Self.mangas.appendingPagingIfNeeded(page: page)
     }
     
     // MARK: - MangaBy...
@@ -29,8 +30,8 @@ extension URL {
         case author = "mangaByAuthor"
     }
 
-    static func mangas(by: By, item: String, page: Int? = nil, per: Int? = nil) -> URL {
-        api.appending(path: "list/\(by.rawValue)/\(item)").appendingPagingIfNeeded(page: page, per: per)
+    static func mangas(by: By, item: String, page: Int? = nil) -> URL {
+        api.appending(path: "list/\(by.rawValue)/\(item)").appendingPagingIfNeeded(page: page)
     }
     
     // MARK: - Searches
@@ -38,17 +39,17 @@ extension URL {
         case begins = "mangasBeginsWith"
         case contains = "mangasContains"
         case author
-        case mangaOrCustom = "manga"  // TODO:
+        case mangaOrCustom = "manga"  //REVIEW:
     }
     
-    static func mangas(search: Search, str: String, page: Int? = nil, per: Int? = nil) -> URL {
-        api.appending(path: "search/\(search.rawValue)/\(str)").appendingPagingIfNeeded(page: page, per: per)
+    static func mangas(search: Search, str: String, page: Int? = nil) -> URL {
+        api.appending(path: "search/\(search.rawValue)/\(str)").appendingPagingIfNeeded(page: page)
     }
     
-    private func appendingPagingIfNeeded(page: Int?, per: Int?) -> URL {
-        if let page, let per {
+    private func appendingPagingIfNeeded(page: Int?) -> URL {
+        if let page {
             let queryItems = [URLQueryItem(name: "page", value: "\(page)"),
-                              URLQueryItem(name: "per", value: "\(per)")]
+                              URLQueryItem(name: "per", value: "\(Self.per)")]
             return self.appending(queryItems: queryItems)
         } else {
             return self
