@@ -42,7 +42,7 @@ struct Manga: Codable, Identifiable {
     let genres: [Genre]
 }
 
-struct Author: Codable {
+struct Author: Codable, Identifiable {
     let id: UUID
     let firstName: String
     let lastName: String

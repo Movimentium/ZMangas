@@ -1,0 +1,218 @@
+[
+    {
+        "lastName": "Miura",
+        "role": "Story & Art",
+        "id": "6F0B6948-08C4-4761-8BE1-192E68AB0A2F",
+        "firstName": "Kentarou"
+    },
+    {
+        "lastName": "Studio Gaga",
+        "role": "Art",
+        "id": "0304C4E9-2D89-463A-8FDD-EEAB5B9D57B3",
+        "firstName": ""
+    },
+    {
+        "lastName": "Oda",
+        "role": "Story & Art",
+        "id": "25617399-543F-4220-9114-3A4181AF8D80",
+        "firstName": "Eiichiro"
+    },
+    {
+        "lastName": "Araki",
+        "role": "Story & Art",
+        "id": "30B3A8B4-7A8D-4913-8370-28975F785354",
+        "firstName": "Hirohiko"
+    },
+    {
+        "lastName": "Asano",
+        "role": "Story & Art",
+        "id": "41200864-D639-4330-998A-4B914A8FCBFB",
+        "firstName": "Inio"
+    },
+    {
+        "lastName": "Arakawa",
+        "role": "Story & Art",
+        "id": "F0D2B37F-8B21-4783-8CD7-11DA6D714A78",
+        "firstName": "Hiromu"
+    },
+    {
+        "lastName": "Inoue",
+        "role": "Story & Art",
+        "id": "FB305DE7-B30E-41D1-B4AB-24B7565E3840",
+        "firstName": "Takehiko"
+    },
+    {
+        "lastName": "Yoshikawa",
+        "role": "Story",
+        "id": "E41AA0E7-6DFC-4D50-9875-8150AF4797BC",
+        "firstName": "Eiji"
+    },
+    {
+        "lastName": "Yukimura",
+        "role": "Story & Art",
+        "id": "F2B6B013-3C9C-4323-9C64-2DA470D8375A",
+        "firstName": "Makoto"
+    },
+    {
+        "lastName": "Akasaka",
+        "role": "Story & Art",
+        "id": "C4B4968E-7AB2-4FBB-86FA-854D36A4A278",
+        "firstName": "Aka"
+    },
+    {
+        "lastName": "Fujimoto",
+        "role": "Story & Art",
+        "id": "D1A6DC50-0B82-4864-AAEB-27A120FD1221",
+        "firstName": "Tatsuki"
+    },
+    {
+        "lastName": "Urasawa",
+        "role": "Story & Art",
+        "id": "54BE174C-2FE9-42C8-A842-85D291A6AEDD",
+        "firstName": "Naoki"
+    },
+    {
+        "lastName": "Ooima",
+        "role": "Story & Art",
+        "id": "70BC80AA-1F4D-4020-9D28-D0E8606B7D94",
+        "firstName": "Yoshitoki"
+    },
+    {
+        "lastName": "Murata",
+        "role": "Art",
+        "id": "E488A952-2FD8-43C6-A845-723F0DB92C59",
+        "firstName": "Yusuke"
+    },
+    {
+        "lastName": "ONE",
+        "role": "Story",
+        "id": "6ED4BCD6-4152-4945-B657-01DE9EF6462F",
+        "firstName": ""
+    },
+    {
+        "lastName": "Obata",
+        "role": "Art",
+        "id": "B5B86087-54A2-49A4-B5EA-518AE451B72B",
+        "firstName": "Takeshi"
+    },
+    {
+        "lastName": "Ohba",
+        "role": "Story",
+        "id": "756DECE4-67C5-42E6-BAC7-9298BEDEB15E",
+        "firstName": "Tsugumi"
+    },
+    {
+        "id": "E19A44F2-1C95-4BC2-BD0E-12424F870295",
+        "role": "Story & Art",
+        "firstName": "Haruichi",
+        "lastName": "Furudate"
+    },
+    {
+        "id": "C5D6F2C5-350D-4600-B1F0-ECC1FEAEC06C",
+        "role": "Story",
+        "firstName": "",
+        "lastName": "Chugong"
+    },
+    {
+        "lastName": "Jang",
+        "firstName": "Sung-rak",
+        "role": "Art",
+        "id": "B8BF4C24-C436-4464-A3E8-BAEC29DF0849"
+    },
+    {
+        "lastName": "Disciples",
+        "firstName": "",
+        "role": "Art",
+        "id": "2553B35B-9FF3-40DC-BC74-69D1CCB3AD55"
+    },
+    {
+        "lastName": "Togashi",
+        "firstName": "Yoshihiro",
+        "role": "Story & Art",
+        "id": "BE082340-CE80-43B7-B9A1-428CD39C6288"
+    },
+    {
+        "lastName": "Inoue",
+        "firstName": "Kenji",
+        "role": "Story",
+        "id": "4EC7FA4A-237C-4775-B9CA-4877114C52D7"
+    },
+    {
+        "lastName": "Yoshioka",
+        "id": "E52E3701-08ED-4E9D-9C59-8BE6AC43CDC2",
+        "firstName": "Kimitake",
+        "role": "Art"
+    },
+    {
+        "lastName": "Taguchi",
+        "id": "9FEBF022-7DCE-4C91-93B0-354996F22F78",
+        "firstName": "Shouichi",
+        "role": "Art"
+    },
+    {
+        "firstName": "Sugaru",
+        "role": "Story",
+        "lastName": "Miaki",
+        "id": "10BCBA63-929B-4ECA-8671-BB90B38C584A"
+    },
+    {
+        "firstName": "Tooru",
+        "role": "Story & Art",
+        "lastName": "Fujisawa",
+        "id": "EEE69343-B9F3-472C-8C8B-68EB865CF867"
+    },
+    {
+        "firstName": "Yasuhisa",
+        "role": "Story & Art",
+        "lastName": "Hara",
+        "id": "1C9F9554-BF44-424A-AF63-55B5C0BAAFC8"
+    },
+    {
+        "firstName": "Hajime",
+        "role": "Story & Art",
+        "lastName": "Isayama",
+        "id": "C4B604CF-B236-447F-AEDC-6D074CDE32EC"
+    },
+    {
+        "firstName": "Sou",
+        "role": "Story & Art",
+        "lastName": "Yayoi",
+        "id": "F62F52F2-DA45-4191-A044-E7EEE34A1DF5"
+    },
+    {
+        "firstName": "Kiyohiko",
+        "role": "Story & Art",
+        "lastName": "Azuma",
+        "id": "1907E1C8-560E-4FEF-9F31-80E507848A9E"
+    },
+    {
+        "firstName": "Tatsuya",
+        "role": "Story & Art",
+        "lastName": "Endou",
+        "id": "251A878E-A9D7-4D44-BEC1-03881D0A136F"
+    },
+    {
+        "firstName": "Sui",
+        "role": "Story & Art",
+        "lastName": "Ishida",
+        "id": "9485AC2F-366D-4C4A-9EAF-7B1D58381BC3"
+    },
+    {
+        "firstName": "Gege",
+        "role": "Story & Art",
+        "lastName": "Akutami",
+        "id": "49BD802F-AD53-4D64-8350-BC3F5D1599DD"
+    },
+    {
+        "firstName": "Akihito",
+        "role": "Story & Art",
+        "lastName": "Tsukushi",
+        "id": "DD3097E1-994E-4FD6-8EC5-527C76B9E138"
+    },
+    {
+        "firstName": "Mengo",
+        "role": "Art",
+        "lastName": "Yokoyari",
+        "id": "9ACB102D-03CB-4772-B1A4-EC395D275F47"
+    }
+]

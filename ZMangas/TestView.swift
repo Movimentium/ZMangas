@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct TestView: View {
+    @EnvironmentObject var vm: MangasVM
+    
+    
+    var sections = ["Demografías", "Generos", "Temas", "Autores"]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            Section {
+                ForEach(vm.demographics, id: \.hashValue) { item in
+                    Text(item)
+                }
+            } header: {
+                Text(sections[0])
+            }
+            Section {
+                ForEach(vm.genres, id: \.hashValue) { item in
+                    Text(item)
+                }
+            } header: {
+                Text(sections[1])
+            }
+            Section {
+                ForEach(vm.themes, id: \.hashValue) { item in
+                    Text(item)
+                }
+            } header: {
+                Text(sections[2])
+            }
+            Section {
+                ForEach(vm.authors) { item in
+                    Text("\(item.lastName), \(item.firstName)")
+                }
+            } header: {
+                Text(sections[3])
+            }
+        }
     }
 }
 
 #Preview {
     TestView()
+//        .environmentObject(MangasVM())
+        .environmentObject(MangasVM.preview)
 }
