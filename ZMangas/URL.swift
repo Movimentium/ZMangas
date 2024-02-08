@@ -23,14 +23,7 @@ extension URL {
     }
     
     // MARK: - MangaBy...
-    enum By: String {
-        case genre = "mangaByGenre"
-        case theme = "mangaByTheme"
-        case demographic = "mangaByDemographic"
-        case author = "mangaByAuthor"
-    }
-
-    static func mangas(by: By, item: String, page: Int? = nil) -> URL {
+    static func mangas(by: FilterBy, item: String, page: Int? = nil) -> URL {
         api.appending(path: "list/\(by.rawValue)/\(item)").appendingPagingIfNeeded(page: page)
     }
     

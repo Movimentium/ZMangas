@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct ZMangasApp: App {
-    @StateObject var vm = MangasVM()  //No muevas esto de aquí
+    @StateObject var vm = MangasVM()
+    @StateObject var searchVM = SearchVM()
     
     var body: some Scene {
         WindowGroup {
+//            FilterView()
             ContentView()
                 .environmentObject(vm)
+                .environmentObject(searchVM)
                 .onAppear {
                     print("Int.max: \(Int.max)")
                     print(URL.mangas)

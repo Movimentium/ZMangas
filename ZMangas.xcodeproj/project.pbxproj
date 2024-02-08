@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C11F6572B75A08D00DD1D80 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C11F6562B75A08D00DD1D80 /* Test.swift */; };
+		0C3AC2E32B756D2A0058A91B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3AC2E22B756D2A0058A91B /* Enums.swift */; };
+		0C3AC2E72B7583200058A91B /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3AC2E62B7583200058A91B /* SearchVM.swift */; };
 		0C5189632B73D2C100D7E0EA /* TestMangaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */; };
 		0C5189662B73F25300D7E0EA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189652B73F25300D7E0EA /* TestView.swift */; };
 		0C5189682B74341200D7E0EA /* BestMangas100.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C5189672B74341200D7E0EA /* BestMangas100.json */; };
@@ -24,12 +27,16 @@
 		0C805F5D2B718E4F007816FA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F5C2B718E4F007816FA /* Network.swift */; };
 		0C805F612B71A65D007816FA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F602B71A65D007816FA /* Model.swift */; };
 		0C805F642B71A6BA007816FA /* MangasVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C805F632B71A6BA007816FA /* MangasVM.swift */; };
+		0CD208792B75613000A5532A /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD208782B75613000A5532A /* FilterView.swift */; };
 		0CE8044A2B743A0000B5DA18 /* Authors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CE804492B743A0000B5DA18 /* Authors.json */; };
 		0CF94A842B743B7600F0683E /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF94A832B743B7600F0683E /* Themes.json */; };
 		0CF94A862B743C0700F0683E /* Genres.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF94A852B743C0700F0683E /* Genres.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C11F6562B75A08D00DD1D80 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		0C3AC2E22B756D2A0058A91B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0C3AC2E62B7583200058A91B /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMangaDetail.swift; sourceTree = "<group>"; };
 		0C5189652B73F25300D7E0EA /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		0C5189672B74341200D7E0EA /* BestMangas100.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BestMangas100.json; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 		0C805F5C2B718E4F007816FA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		0C805F602B71A65D007816FA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0C805F632B71A6BA007816FA /* MangasVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasVM.swift; sourceTree = "<group>"; };
+		0CD208782B75613000A5532A /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		0CE804492B743A0000B5DA18 /* Authors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Authors.json; sourceTree = "<group>"; };
 		0CF94A832B743B7600F0683E /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
 		0CF94A852B743C0700F0683E /* Genres.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Genres.json; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 		0C5189642B73ECD500D7E0EA /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
+				0C11F6562B75A08D00DD1D80 /* Test.swift */,
 				0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */,
 				0C5189652B73F25300D7E0EA /* TestView.swift */,
 			);
@@ -94,6 +103,7 @@
 			children = (
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C57D0562B716F1000181AAD /* ContentView.swift */,
+				0CD208782B75613000A5532A /* FilterView.swift */,
 				0C5189642B73ECD500D7E0EA /* TestViews */,
 				0C805F622B71A6A3007816FA /* ViewModel */,
 				0C805F5B2B718E1F007816FA /* Interactor */,
@@ -123,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0C805F602B71A65D007816FA /* Model.swift */,
+				0C3AC2E22B756D2A0058A91B /* Enums.swift */,
 				0C805F4F2B7170D7007816FA /* DTOModel.swift */,
 			);
 			name = Model;
@@ -151,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0C805F632B71A6BA007816FA /* MangasVM.swift */,
+				0C3AC2E62B7583200058A91B /* SearchVM.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -230,12 +242,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD208792B75613000A5532A /* FilterView.swift in Sources */,
 				0C5189662B73F25300D7E0EA /* TestView.swift in Sources */,
+				0C3AC2E72B7583200058A91B /* SearchVM.swift in Sources */,
 				0C805F612B71A65D007816FA /* Model.swift in Sources */,
+				0C11F6572B75A08D00DD1D80 /* Test.swift in Sources */,
 				0C805F502B7170D7007816FA /* DTOModel.swift in Sources */,
 				0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */,
 				0C51896A2B74344C00D7E0EA /* PreviewData.swift in Sources */,
 				0C805F5D2B718E4F007816FA /* Network.swift in Sources */,
+				0C3AC2E32B756D2A0058A91B /* Enums.swift in Sources */,
 				0C57D0572B716F1000181AAD /* ContentView.swift in Sources */,
 				0C57D0552B716F1000181AAD /* ZMangasApp.swift in Sources */,
 				0C805F582B718D93007816FA /* NetworkError.swift in Sources */,

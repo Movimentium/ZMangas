@@ -31,7 +31,7 @@ struct Manga: Codable, Identifiable {
     let volumes: Int?
     let chapters: Int?
 
-    let sypnosis: String
+    let sypnosis: String?
     let background: String?
     let mainPicture: URL?
     let url: URL?
@@ -42,11 +42,18 @@ struct Manga: Codable, Identifiable {
     let genres: [Genre]
 }
 
-struct Author: Codable, Identifiable {
+struct Author: Codable, Identifiable, Hashable {
     let id: UUID
     let firstName: String
     let lastName: String
     let role: String
+    
+    var fullName: String {
+        if firstName.isEmpty {
+           return lastName
+        }
+        return "\(firstName) \(lastName)"
+    }
 }
 
 struct Theme: Codable {

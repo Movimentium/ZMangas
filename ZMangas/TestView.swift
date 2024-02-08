@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TestView: View {
-    @EnvironmentObject var vm: MangasVM
+    @EnvironmentObject var vm: SearchVM
     
     
     var sections = ["Demografías", "Generos", "Temas", "Autores"]
@@ -16,7 +16,7 @@ struct TestView: View {
     var body: some View {
         List {
             Section {
-                ForEach(vm.demographics, id: \.hashValue) { item in
+                ForEach(vm.demographics, id: \.self) { item in
                     Text(item)
                 }
             } header: {
@@ -44,11 +44,15 @@ struct TestView: View {
                 Text(sections[3])
             }
         }
+        .onAppear(perform: {
+            print(vm.isFilterActive)
+        })
     }
 }
 
 #Preview {
     TestView()
 //        .environmentObject(MangasVM())
-        .environmentObject(MangasVM.preview)
+//        .environmentObject(MangasVM.preview)
+        .environmentObject(SearchVM())
 }

@@ -31,7 +31,7 @@ struct DTOManga: Codable {
     let volumes: Int?
     let chapters: Int?
 
-    let sypnosis: String
+    let sypnosis: String?
     let background: String?
     let mainPicture: String?
     let url: String? 
