@@ -15,7 +15,8 @@ struct ZMangasApp: App {
     var body: some Scene {
         WindowGroup {
 //            FilterView()
-            ContentView()
+//            ContentView()
+            MangasTabView()
                 .environmentObject(vm)
                 .environmentObject(searchVM)
                 .onAppear {
