@@ -21,11 +21,11 @@ struct DTOMetaData: Codable {
 struct DTOManga: Codable {
     let id: Int
     let title: String
-    let titleJapanese: String
+    let titleJapanese: String?
     let titleEnglish: String?
     let score: Float
     
-    let startDate: String
+    let startDate: String?
     let endDate: String?
     let status: String
     let volumes: Int?

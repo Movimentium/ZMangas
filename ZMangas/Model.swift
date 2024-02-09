@@ -21,11 +21,11 @@ struct MetaData: Codable {
 struct Manga: Codable, Identifiable {
     let id: Int
     let title: String
-    let titleJapanese: String
+    let titleJapanese: String?
     let titleEnglish: String?
     let score: Float
     
-    let startDate: String
+    let startDate: String?
     let endDate: String?
     let status: String
     let volumes: Int?
@@ -47,7 +47,6 @@ struct Author: Codable, Identifiable, Hashable {
     let firstName: String
     let lastName: String
     let role: String
-    
 }
 
 struct Theme: Codable {
@@ -70,6 +69,18 @@ extension Manga {
     var authorsFullNames: String {
         authors.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.fullName}
     }
+    
+    var strGenres: String {
+        genres.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.genre}
+    }
+    
+    var strDemographics: String {
+        demographics.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.demographic}
+    }
+    
+    var strThemes: String {
+        themes.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.theme}
+    }
 }
 
 extension Author {
@@ -80,3 +91,4 @@ extension Author {
         return "\(firstName) \(lastName)"
     }
 }
+

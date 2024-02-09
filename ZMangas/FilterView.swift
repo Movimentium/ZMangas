@@ -18,9 +18,10 @@ struct FilterView: View {
             }
             Spacer()
             Button("Aplicar") {
-                vm.showFilter = false
-                mangasVM.getMangas(by: vm.filterBy, 
-                                   item: vm.itemToFilter)
+                if vm.isValidSelection {
+                    mangasVM.getMangas(by: vm.filterBy,
+                                       item: vm.itemToFilter)
+                }
             }
         }
         .padding()
@@ -42,10 +43,8 @@ struct FilterView: View {
         } else {
             List(vm.authors, selection: $vm.selectedAuthorID) { author in
                 Text(author.fullName)
-//                    .tag(author.id)
             }
         }
-        
     }
 }
 

@@ -18,12 +18,12 @@ extension URL {
     static let genres = api.appending(path: "list/genres")
     static let themes = api.appending(path: "list/themes")
 
-    static func mangas(page: Int? = nil) -> URL {
+    static func mangas(page: Int) -> URL {
         Self.mangas.appendingPagingIfNeeded(page: page)
     }
     
     // MARK: - MangaBy...
-    static func mangas(by: FilterBy, item: String, page: Int? = nil) -> URL {
+    static func mangas(by: FilterBy, item: String, page: Int) -> URL {
         api.appending(path: "list/\(by.rawValue)/\(item)").appendingPagingIfNeeded(page: page)
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DataInteractor {
-    func getMangaPage() async throws -> MangaPage
+    func getMangaPage(_ page: Int) async throws -> MangaPage
     func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage
     
     // Search criteria
@@ -41,8 +41,8 @@ struct Network: DataInteractor {
     }
 
     // MARK: - DataInteractor methods
-    func getMangaPage() async throws -> MangaPage {
-        try await getJSON(request: .get(url: .mangas(page: 1)), type: DTOMangaPage.self).toModel
+    func getMangaPage(_ page: Int) async throws -> MangaPage {
+        try await getJSON(request: .get(url: .mangas(page: page)), type: DTOMangaPage.self).toModel
     }
     
     func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {

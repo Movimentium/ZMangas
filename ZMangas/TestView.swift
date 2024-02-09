@@ -44,9 +44,7 @@ struct TestView: View {
                 Text(sections[3])
             }
         }
-        .onAppear(perform: {
-            print(vm.isFilterActive)
-        })
+      
     }
 }
 

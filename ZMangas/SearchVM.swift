@@ -18,7 +18,6 @@ final class SearchVM: ObservableObject {
     var genres: [String] = []
     var themes: [String] = []
 
-    @Published var isFilterActive = false
     @Published var showFilter = false
     @Published var selectedItem: String? { didSet {
         itemToFilter = selectedItem ?? "" }
@@ -59,4 +58,13 @@ final class SearchVM: ObservableObject {
         }
     }
 
+    var isValidSelection: Bool {
+        if itemToFilter.isEmpty {
+            //TODO: mostrar alerta
+            return false
+        } else {
+            showFilter = false 
+            return true
+        }
+    }
 }

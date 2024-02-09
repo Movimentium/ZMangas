@@ -19,17 +19,45 @@ struct ContentView: View {
                     Text(manga.authorsFullNames)
                         .font(.caption)
                         .foregroundStyle(.gray)
+                    HStack(alignment: .top) {
+                        Text(FilterBy.genre.name)
+                            .font(.caption)
+                            .bold()
+                        Text(manga.strGenres)
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+
+                    }
+                    HStack(alignment: .top) {
+                        Text(FilterBy.theme.name)
+                            .font(.caption)
+                            .bold()
+                        Text(manga.strThemes)
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                    }
+                    HStack(alignment: .top) {
+                        Text(FilterBy.demographic.name)
+                            .font(.caption)
+                            .bold()
+                        Text(manga.strDemographics)
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                    }
                 }
             }
             .navigationTitle("Mangas")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Filtrar por", systemImage: "line.3.horizontal.decrease.circle") {
-                        if searchVM.isFilterActive {
-                            
+                    Button {
+                        if vm.isFilterActive {
+                            vm.getMangas(resetting: true)
                         } else {
                             searchVM.showFilter = true
                         }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .symbolVariant(vm.isFilterActive ? .fill: .none)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {

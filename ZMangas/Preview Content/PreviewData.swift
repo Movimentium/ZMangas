@@ -13,6 +13,8 @@ import Foundation
 
 
 struct PreviewInteractor: DataInteractor {
+
+    
     func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {
         return MangaPage.init(items: [], metadata: MetaData(total: 6, page: 6, per: 6 ))
     } //REVIEW: 
@@ -28,7 +30,7 @@ struct PreviewInteractor: DataInteractor {
         return try JSONDecoder().decode(T.self, from: data)
     }
     
-    func getMangaPage() async throws -> MangaPage {
+    func getMangaPage(_ page: Int) async throws -> MangaPage {
         let dtoMangaPage: DTOMangaPage = try loadTestJSON(url: mangasURL)
         return dtoMangaPage.toModel
     }

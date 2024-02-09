@@ -22,8 +22,6 @@ struct ZMangasApp: App {
                     print("Int.max: \(Int.max)")
                     print(URL.mangas)
                     print(URL.mangas(page: 2))
-                    print(URL.mangas())
-                    print(URL.mangas(by: .genre, item: "romance"))
                     print(URL.mangas(by: .genre, item: "romance", page: 2))
                 }
         }
