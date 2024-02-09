@@ -14,7 +14,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(vm.mangas) { manga in
-                Text(manga.title)
+                VStack(alignment: .leading) {
+                    Text(manga.title)
+                    Text(manga.authorsFullNames)
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                }
             }
             .navigationTitle("Mangas")
             .toolbar {

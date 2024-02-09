@@ -48,12 +48,6 @@ struct Author: Codable, Identifiable, Hashable {
     let lastName: String
     let role: String
     
-    var fullName: String {
-        if firstName.isEmpty {
-           return lastName
-        }
-        return "\(firstName) \(lastName)"
-    }
 }
 
 struct Theme: Codable {
@@ -69,4 +63,20 @@ struct Demographic: Codable {
 struct Genre: Codable {
     let id: UUID
     let genre: String
+}
+
+
+extension Manga {
+    var authorsFullNames: String {
+        authors.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.fullName}
+    }
+}
+
+extension Author {
+    var fullName: String {
+        if firstName.isEmpty {
+           return lastName
+        }
+        return "\(firstName) \(lastName)"
+    }
 }

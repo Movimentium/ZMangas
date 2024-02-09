@@ -13,6 +13,10 @@ import Foundation
 
 
 struct PreviewInteractor: DataInteractor {
+    func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {
+        return MangaPage.init(items: [], metadata: MetaData(total: 6, page: 6, per: 6 ))
+    } //REVIEW: 
+    
     let mangasURL = Bundle.main.url(forResource: "BestMangas100", withExtension: "json")!
     let authorsURL = Bundle.main.url(forResource: "Authors", withExtension: "json")!
     let themesURL = Bundle.main.url(forResource: "Themes", withExtension: "json")!

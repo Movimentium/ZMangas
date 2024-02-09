@@ -12,6 +12,8 @@ final class MangasVM: ObservableObject {
     
     @Published var mangas: [Manga] = []
     
+    private var page = 1
+    
     init(interactor: DataInteractor = Network()) {
         self.interactor = interactor
         Task {
@@ -32,6 +34,16 @@ final class MangasVM: ObservableObject {
     
     func getMangas(by: FilterBy, item: String) {
         print(Self.self, #function, by.rawValue, item)
+        Task {
+            do {
+                let mangaPage = try await interactor.getMangas(by: by, item: item, page: page)
+                await MainActor.run {
+                    self.mangas = mangaPage.items
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     
