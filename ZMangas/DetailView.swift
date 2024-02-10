@@ -14,19 +14,14 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                AsyncImage(url: manga.coverURL) { img in
-                    img
-                        .resizable()
-                    
-                } placeholder: {
-                    Image(systemName: "book")
-                        .resizable()
-                        .scaledToFit()
-                }
-
+                
+                
             }
         }
         .padding()
+        .onAppear {
+            print(manga.title)
+        }
     }
 }
     

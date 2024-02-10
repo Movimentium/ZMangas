@@ -27,12 +27,12 @@ final class MangasVM: ObservableObject {
     }
     
     func loadNextPageIfNeeded(manga: Manga) {
-        if mangas.last?.id == manga.id && !isLoadingData {
+        if mangas.last?.id == manga.id && !isLoadingData && remainingMangas > 0 {
             isLoadingData = true
             page += 1
             Task {
                 if isFilterActive {
-                    await getMangaPageBy()
+                    await getMangaByPage()
                 } else {
                     await getMangaPage()
                 }
@@ -40,9 +40,10 @@ final class MangasVM: ObservableObject {
         }
     }
     
-    private func todo() {
+    private var remainingMangas: Int {
         let remaining = metaData.total - metaData.page * metaData.per
-        print("remaining: ", remaining)
+        print("\nremaining: ", remaining);  print(metaData)
+        return remaining
     }
     
     // MARK: - Mangas ==============================================================
@@ -61,6 +62,7 @@ final class MangasVM: ObservableObject {
             let mangaPage = try await interactor.getMangaPage(page)
             await MainActor.run {
                 mangas += mangaPage.items
+                metaData = mangaPage.metadata
                 isLoadingData = false
             }
         } catch {
@@ -79,16 +81,16 @@ final class MangasVM: ObservableObject {
         filterItem = item
         reset()
         Task {
-            await getMangaPageBy()
+            await getMangaByPage()
         }
     }
     
-    func getMangaPageBy() async {
+    func getMangaByPage() async {
         do {
-            let mangaPage = try await interactor.getMangas(by: filterBy, item: filterItem, page: page)
+            let mangaByPage = try await interactor.getMangas(by: filterBy, item: filterItem, page: page)
             await MainActor.run {
-                mangas += mangaPage.items
-                metaData = mangaPage.metadata
+                mangas += mangaByPage.items
+                metaData = mangaByPage.metadata
                 isLoadingData = false
             }
         } catch {

@@ -16,21 +16,12 @@ struct GridView: View {
         ScrollView {
             LazyVGrid(columns: [gridItem]) {
                 ForEach(vm.mangas) { manga in
-                    VStack {
-                        AsyncImage(url: manga.coverURL) { cover in
-                            cover
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 250)
-                        } placeholder: {
-                            Image(systemName: "book")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 250)
-                        }
-                        .shadow(radius: 8)
+                    VStack(alignment: .center) {
+                        BookCoverView(coverURL: manga.coverURL, mode: .grid)
                         Text(manga.title)
+                            .font(.headline)
                     }
+//                    .border(Color.pink)
                 }
             }
             .padding()

@@ -8,26 +8,13 @@
 import SwiftUI
 
 struct MangaRowView: View {
-    
     let manga: Manga
     
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .center) {
-                AsyncImage(url: manga.coverURL) { cover in
-                    cover.resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                } placeholder: {
-                    Image(systemName: "a.book.closed.ja")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                        .fontWeight(.ultraLight)
-                }
+                BookCoverView(coverURL: manga.coverURL, mode: .row)
                 .padding(.top, 6)
-                .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 0)
-              
             }
             VStack(alignment: .leading) {
                 Text(manga.title)
@@ -68,4 +55,5 @@ struct MangaRowView: View {
 
 #Preview {
     MangaRowView(manga: .akira)
+        .border(Color.pink)
 }

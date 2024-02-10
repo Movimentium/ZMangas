@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct BookCoverView: View {
-    let cover: Image
+    let coverURL: URL?
+    let mode: Mode
     
     var body: some View {
-        cover
-            .resizable()
-            .scaledToFit()
-            .frame(height: 200)
+        AsyncImage(url: coverURL) { cover in
+            cover.resizable()
+                .scaledToFit()
+                .frame(width: mode == .row ? 80 : 160)
+        } placeholder: {
+            Image(systemName: "a.book.closed.ja")
+                .resizable()
+                .scaledToFit()
+                .frame(width: mode == .row ? 80 : 160)
+                .fontWeight(.ultraLight)
+        }
+        .shadow(color: .black.opacity(0.3), 
+                radius: mode == .row ? 4 : 8,
+                x: 0, y: 0)
+    }
+    
+    enum Mode {
+        case row
+        case grid
     }
 }
 
 #Preview {
-    BookCoverView(cover: Image(.akira))
+    BookCoverView(coverURL: .akiraCoverURL, mode: .row)
 }

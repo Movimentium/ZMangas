@@ -92,3 +92,8 @@ extension Author {
     }
 }
 
+extension MetaData: CustomStringConvertible {
+    var description: String {
+        "per: \(per), page: \(page), total: \(total)"
+    }
+}

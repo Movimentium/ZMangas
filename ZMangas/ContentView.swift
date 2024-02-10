@@ -22,6 +22,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Mangas")
+            .navigationDestination(for: Manga.self) { manga in
+                DetailView(manga: manga)
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

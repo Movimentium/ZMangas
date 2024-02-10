@@ -78,3 +78,7 @@ extension SearchVM {
 extension Manga {
     static let akira = PreviewInteractor().getAkira()
 }
+
+extension URL {
+    static let akiraCoverURL = URL(string: "https://cdn.myanimelist.net/images/manga/3/271629l.jpg")!
+}
