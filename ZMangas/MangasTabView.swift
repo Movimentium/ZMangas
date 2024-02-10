@@ -14,7 +14,8 @@ struct MangasTabView: View {
                 .tabItem {
                     Label("Mangas", systemImage: "list.star")
                 }
-            BestMangasView()
+//            /*BestMangasView*/()
+            GridView()
                 .tabItem {
                     Label("Best Mangas", systemImage: "star.fill")
                 }

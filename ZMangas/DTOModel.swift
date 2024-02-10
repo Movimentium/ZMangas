@@ -34,7 +34,9 @@ struct DTOManga: Codable {
     let sypnosis: String?
     let background: String?
     let mainPicture: String?
-    let url: String? 
+//    let mainPicture: URL?
+    
+    let url: String?
 
     let authors: [DTOAuthor]
     let themes: [DTOTheme]
@@ -82,17 +84,17 @@ extension DTOManga {
         Manga(id: id,
               title: title,
               titleJapanese: titleJapanese,
-              titleEnglish: title, 
+              titleEnglish: title,
               score: score,
-              startDate: startDate, 
+              startDate: startDate,
               endDate: endDate,
-              status: status, 
+              status: status,
               volumes: volumes,
               chapters: chapters,
-              sypnosis: sypnosis, 
+              sypnosis: sypnosis,
               background: background,
-              mainPicture: URL(string: mainPicture ?? ""),
-              url: URL(string: url ?? ""),
+              coverURL: URL(string: mainPicture?.replacingOccurrences(of: "\"", with: "") ?? ""),
+              url: URL(string: url?.replacingOccurrences(of: "\"", with: "") ?? ""),
               authors: authors.map(\.toModel),
               themes: themes.map(\.toModel),
               demographics: demographics.map(\.toModel),

@@ -33,7 +33,7 @@ struct Manga: Codable, Identifiable {
 
     let sypnosis: String?
     let background: String?
-    let mainPicture: URL?
+    let coverURL: URL?
     let url: URL?
 
     let authors: [Author]

@@ -7,19 +7,10 @@
 
 import Foundation
 
-
-
-
-
-
 struct PreviewInteractor: DataInteractor {
-
-    
-    func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {
-        return MangaPage.init(items: [], metadata: MetaData(total: 6, page: 6, per: 6 ))
-    } //REVIEW: 
-    
-    let mangasURL = Bundle.main.url(forResource: "BestMangas100", withExtension: "json")!
+    let akiraURL = Bundle.main.url(forResource: "Akira", withExtension: "json")!
+    let mangasURL = Bundle.main.url(forResource: "Mangas100", withExtension: "json")!
+    let bestMangasURL = Bundle.main.url(forResource: "BestMangas100", withExtension: "json")!
     let authorsURL = Bundle.main.url(forResource: "Authors", withExtension: "json")!
     let themesURL = Bundle.main.url(forResource: "Themes", withExtension: "json")!
     let genresURL = Bundle.main.url(forResource: "Genres", withExtension: "json")!
@@ -33,6 +24,24 @@ struct PreviewInteractor: DataInteractor {
     func getMangaPage(_ page: Int) async throws -> MangaPage {
         let dtoMangaPage: DTOMangaPage = try loadTestJSON(url: mangasURL)
         return dtoMangaPage.toModel
+    }
+    
+    func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {
+        let dtoMangaPage: DTOMangaPage = try loadTestJSON(url: mangasURL)
+        return switch filter {
+        case .genre:
+            MangaPage(items: dtoMangaPage.items.map(\.toModel).filter { $0.genres.contains { $0.genre == item }},
+                      metadata: dtoMangaPage.metadata.toModel)
+        case .theme:
+            MangaPage(items: dtoMangaPage.items.map(\.toModel).filter { $0.themes.contains { $0.theme == item }},
+                      metadata: dtoMangaPage.metadata.toModel)
+        case .demographic:
+            MangaPage(items: dtoMangaPage.items.map(\.toModel).filter { $0.demographics.contains { $0.demographic == item }},
+                      metadata: dtoMangaPage.metadata.toModel)
+        case .author:
+            MangaPage(items: dtoMangaPage.items.map(\.toModel).filter { $0.authors.contains { $0.id.uuidString == item }},
+                      metadata: dtoMangaPage.metadata.toModel)
+        }
     }
     
     func getAuthors() async throws -> [Author] {
@@ -51,8 +60,21 @@ struct PreviewInteractor: DataInteractor {
     func getThemes() async throws -> [String] {
         try loadTestJSON(url: themesURL)
     }
+    
+    func getAkira() -> Manga {
+        let dtoManga: DTOManga = try! loadTestJSON(url: akiraURL)
+        return dtoManga.toModel
+    }
 }
 
 extension MangasVM {
     static let preview = MangasVM(interactor: PreviewInteractor())
+}
+
+extension SearchVM {
+    static let preview = SearchVM(interactor: PreviewInteractor())
+}
+
+extension Manga {
+    static let akira = PreviewInteractor().getAkira()
 }
