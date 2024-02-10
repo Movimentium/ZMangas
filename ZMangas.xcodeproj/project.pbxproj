@@ -39,6 +39,7 @@
 		0CE8044A2B743A0000B5DA18 /* Authors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CE804492B743A0000B5DA18 /* Authors.json */; };
 		0CF94A842B743B7600F0683E /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF94A832B743B7600F0683E /* Themes.json */; };
 		0CF94A862B743C0700F0683E /* Genres.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF94A852B743C0700F0683E /* Genres.json */; };
+		0CF9A6EB2B780217001F4E81 /* MangaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9A6EA2B780217001F4E81 /* MangaRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		0CE804492B743A0000B5DA18 /* Authors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Authors.json; sourceTree = "<group>"; };
 		0CF94A832B743B7600F0683E /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
 		0CF94A852B743C0700F0683E /* Genres.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Genres.json; sourceTree = "<group>"; };
+		0CF9A6EA2B780217001F4E81 /* MangaRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 		0C1E36FE2B768EED0050E94E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0CB0E5B62B76E0C40061FBC7 /* DetailView.swift */,
+				0CF9A6EA2B780217001F4E81 /* MangaRowView.swift */,
 				0CB0E5BC2B76E77B0061FBC7 /* BookCoverView.swift */,
 			);
 			name = Components;
@@ -133,6 +135,7 @@
 				0C1E36F82B768B200050E94E /* BestMangasView.swift */,
 				0C1E36FA2B768B300050E94E /* MyMangasView.swift */,
 				0CD208782B75613000A5532A /* FilterView.swift */,
+				0CB0E5B62B76E0C40061FBC7 /* DetailView.swift */,
 				0C1E36FE2B768EED0050E94E /* Components */,
 				0C5189642B73ECD500D7E0EA /* TestViews */,
 				0C805F622B71A6A3007816FA /* ViewModel */,
@@ -288,6 +291,7 @@
 				0C805F5A2B718DD5007816FA /* URLSession.swift in Sources */,
 				0C51896A2B74344C00D7E0EA /* PreviewData.swift in Sources */,
 				0C805F5D2B718E4F007816FA /* Network.swift in Sources */,
+				0CF9A6EB2B780217001F4E81 /* MangaRowView.swift in Sources */,
 				0CB0E5B72B76E0C40061FBC7 /* DetailView.swift in Sources */,
 				0C3AC2E32B756D2A0058A91B /* Enums.swift in Sources */,
 				0C1E36FD2B768B790050E94E /* MangasTabView.swift in Sources */,

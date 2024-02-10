@@ -18,7 +18,7 @@ struct MetaData: Codable {
     let per: Int
 }
 
-struct Manga: Codable, Identifiable {
+struct Manga: Codable, Identifiable, Hashable {
     let id: Int
     let title: String
     let titleJapanese: String?
@@ -30,12 +30,12 @@ struct Manga: Codable, Identifiable {
     let status: String
     let volumes: Int?
     let chapters: Int?
-
+    
     let sypnosis: String?
     let background: String?
     let coverURL: URL?
     let url: URL?
-
+    
     let authors: [Author]
     let themes: [Theme]
     let demographics: [Demographic]
@@ -49,17 +49,17 @@ struct Author: Codable, Identifiable, Hashable {
     let role: String
 }
 
-struct Theme: Codable {
+struct Theme: Codable, Hashable {
     let id: UUID
     let theme: String
 }
 
-struct Demographic: Codable {
+struct Demographic: Codable, Hashable  {
     let id: UUID
     let demographic: String
 }
 
-struct Genre: Codable {
+struct Genre: Codable, Hashable  {
     let id: UUID
     let genre: String
 }
