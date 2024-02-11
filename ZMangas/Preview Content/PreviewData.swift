@@ -22,6 +22,15 @@ struct PreviewInteractor: DataInteractor {
         return try JSONDecoder().decode(T.self, from: data)
     }
     
+    var mangas100Test: [Manga] {
+        if let dtoMangaPage: DTOMangaPage = try? loadTestJSON(url: mangasURL) {
+            return dtoMangaPage.toModel.items
+        } else {
+            print(#function," Error")
+            return []
+        }
+    }
+    
     // MARK: - DataInteractor methods
     func getMangaPage(_ page: Int) async throws -> MangaPage {
         let dtoMangaPage: DTOMangaPage = try loadTestJSON(url: mangasURL)
@@ -57,10 +66,7 @@ struct PreviewInteractor: DataInteractor {
                       metadata: dtoMangaPage.metadata.toModel)
         }
     }
-    
-    
-    
-    
+        
     func getAuthors(by str: String) async throws -> [Author] {
         try await getAuthors().filter{ $0.fullName.contains(str) || $0.lastName.contains(str) }
     }

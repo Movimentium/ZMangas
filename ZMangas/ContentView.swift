@@ -10,16 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var vm: MangasVM
     @EnvironmentObject var searchVM: SearchVM
+    @State private var isGridMode = false
     
     var body: some View {
         NavigationStack {
-            List(vm.mangas) { manga in
-                NavigationLink(value: manga) {
-                    MangaRowView(manga: manga)
-                }
-                .onAppear {
-                    vm.loadNextPageIfNeeded(manga: manga)
-                }
+            ZStack {
+                    MangasGrid(mangas: $vm.mangas,
+                               onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
+                    .opacity(isGridMode ? 1 : 0)
+                    MangasList(mangas: $vm.mangas,
+                              onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
+                    .opacity(isGridMode ? 0 : 1)
+
             }
             .navigationTitle("Mangas")
             .navigationDestination(for: Manga.self) { manga in
@@ -40,10 +42,17 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Buscar", systemImage: "magnifyingglass") {
-                        
+                        //TODO:
                     }
                 }
-            }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        isGridMode.toggle()
+                    } label: {
+                        Image(systemName: isGridMode ? "rectangle.grid.1x2" : "square.grid.2x2")
+                    }
+                }
+            } //.toolbar
         }
         .sheet(isPresented: $searchVM.showFilter) {
             FilterView()

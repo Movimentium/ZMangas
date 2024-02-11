@@ -1,30 +1,30 @@
 //
-//  GridView.swift
+//  MangasGrid.swift
 //  ZMangas
 //
-//  Created by Miguel Gallego on 10/2/24.
+//  Created by Miguel Gallego on 11/2/24.
 //
 
 import SwiftUI
 
-struct GridView: View {
-    @EnvironmentObject var vm: MangasVM
+struct MangasGrid: View {
+    @Binding var mangas: [Manga]
+    var onAppearNewMangaFunc: ((Manga) -> Void)?
     
-    let gridItem = GridItem(.adaptive(minimum: 150))
+    private let gridItem = GridItem(.adaptive(minimum: 150))
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [gridItem]) {
-                ForEach(vm.mangas) { manga in
+                ForEach(mangas) { manga in
                     VStack(alignment: .center) {
                         BookCoverView(coverURL: manga.coverURL, mode: .grid)
                         Text(manga.title)
                             .font(.headline)
                     }
                     .onAppear {
-                        
+                        onAppearNewMangaFunc?(manga)
                     }
-//                    .border(Color.pink)
                 }
             }
             .padding()
@@ -33,6 +33,5 @@ struct GridView: View {
 }
 
 #Preview {
-    GridView()
-        .environmentObject(MangasVM.preview)
+    MangasList(mangas: .constant(PreviewInteractor().mangas100Test))
 }
