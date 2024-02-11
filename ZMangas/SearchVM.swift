@@ -13,12 +13,13 @@ final class SearchVM: ObservableObject {
     @Published var filterBy = FilterBy.genre
     var itemToFilter = ""
     
-    var authors: [Author] = []
     var demographics: [String] = []
     var genres: [String] = []
     var themes: [String] = []
+    var authors: [Author] = []
 
     @Published var showFilter = false
+    @Published var searchAuthorInList = ""
     @Published var selectedItem: String? { didSet {
         itemToFilter = selectedItem ?? "" }
     }
@@ -31,10 +32,20 @@ final class SearchVM: ObservableObject {
         case .genre:  genres
         case .theme:  themes
         case .demographic:  demographics
-        case .author:  authors.map(\.lastName)
+        case .author:  [] // No aplicable
         }
     }
     
+    var authorsFiltered: [Author] {
+        if searchAuthorInList.isEmpty {
+            return authors
+        } else {
+            return authors.filter {
+                $0.fullName.range(of: searchAuthorInList, options: [.caseInsensitive, .diacriticInsensitive]) != nil
+            }
+        }
+    }
+
     init(interactor: DataInteractor = Network()) {
         self.interactor = interactor
         Task {

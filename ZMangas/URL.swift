@@ -10,7 +10,7 @@ import Foundation
 let api = URL(string: "https://mymanga-acacademy-5607149ebe3d.herokuapp.com/")!
 
 extension URL {
-    static let per = 50 //REVIEW:
+    static let per = 50
     static let mangas = api.appending(path: "list/mangas")
     static let bestMangas = api.appending(path: "list/bestMangas")
     static let authors = api.appending(path: "list/authors")
@@ -21,7 +21,7 @@ extension URL {
     static func mangas(page: Int) -> URL {
         Self.mangas.appendingPagingIfNeeded(page: page)
     }
-    
+        
     // MARK: - MangaBy...
     static func mangas(by: FilterBy, item: String, page: Int) -> URL {
         api.appending(path: "list/\(by.rawValue)/\(item)").appendingPagingIfNeeded(page: page)
@@ -32,11 +32,17 @@ extension URL {
         case begins = "mangasBeginsWith"
         case contains = "mangasContains"
         case author
-        case mangaOrCustom = "manga"  //REVIEW:
+        case mangaId = "manga"
+        case custom
     }
     
-    static func mangas(search: Search, str: String, page: Int? = nil) -> URL {
-        api.appending(path: "search/\(search.rawValue)/\(str)").appendingPagingIfNeeded(page: page)
+    static func mangas(search: Search, str: String = "", page: Int? = nil) -> URL {
+        return switch search {
+        case .custom:
+            api.appending(path: "search/manga").appendingPagingIfNeeded(page: page)
+        default:
+            api.appending(path: "search/\(search.rawValue)/\(str)").appendingPagingIfNeeded(page: page)
+        }
     }
     
     private func appendingPagingIfNeeded(page: Int?) -> URL {

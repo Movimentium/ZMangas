@@ -10,8 +10,13 @@ import Foundation
 protocol DataInteractor {
     func getMangaPage(_ page: Int) async throws -> MangaPage
     func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage
+    func getManga(id: String) async throws -> Manga
+    func getMangas(beginsWith str: String) async throws -> [Manga]
+    func getMangas(contains str: String, page: Int) async throws -> MangaPage
+//    func getMangas(customQuery query: DTOCustomSearch, page: Int) -> MangaPage  //TODO:REVIEW:
+    func getAuthors(by str: String) async throws -> [Author]
     
-    // Search criteria
+    // Filter criteria
     func getAuthors() async throws -> [Author]
     func getDemographics() async throws -> [String]
     func getGenres() async throws -> [String]
@@ -50,7 +55,34 @@ struct Network: DataInteractor {
                           type: DTOMangaPage.self).toModel
     }
     
-    // Search criteria
+    func getMangas(beginsWith str: String) async throws -> [Manga] {
+        try await getJSON(request: .get(url: .mangas(search: .begins, str: str)),
+                          type: [DTOManga].self).map(\.toModel)
+    }
+    
+    func getMangas(contains str: String, page: Int) async throws -> MangaPage {
+        try await getJSON(request: .get(url: .mangas(search: .contains, str: str, page: page)),
+                          type: DTOMangaPage.self).toModel
+    }
+
+    func getManga(id: String) async throws -> Manga {
+        try await getJSON(request: .get(url: .mangas(search: .mangaId, str: id)),
+                          type: DTOManga.self).toModel
+    }
+
+    //TODO:REVIEW:
+//    func getMangas(customQuery query: DTOCustomSearch, page: Int) -> MangaPage {
+//        let dtoMangaPage: DTOMangaPage = try await postJSON(request: .post(url: .mangas(search: .custom, page: page),
+//                                          data: query))
+//        return dtoMangaPage.toModel
+//    }
+
+    func getAuthors(by str: String) async throws -> [Author] {
+        try await getJSON(request: .get(url: .mangas(search: .author, str: str)),
+                          type: [DTOAuthor].self).map(\.toModel)
+    }
+    
+    // Filter criteria
     func getAuthors() async throws -> [Author] {
         try await getJSON(request: .get(url: .authors), type: [DTOAuthor].self).map(\.toModel)
     }
@@ -67,5 +99,4 @@ struct Network: DataInteractor {
         try await getJSON(request: .get(url: .themes), type: [String].self)
     }
     
-    // Filter by
 }

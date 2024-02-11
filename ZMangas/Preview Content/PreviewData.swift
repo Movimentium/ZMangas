@@ -8,6 +8,7 @@
 import Foundation
 
 struct PreviewInteractor: DataInteractor {
+
     let akiraURL = Bundle.main.url(forResource: "Akira", withExtension: "json")!
     let mangasURL = Bundle.main.url(forResource: "Mangas100", withExtension: "json")!
     let bestMangasURL = Bundle.main.url(forResource: "BestMangas100", withExtension: "json")!
@@ -21,9 +22,22 @@ struct PreviewInteractor: DataInteractor {
         return try JSONDecoder().decode(T.self, from: data)
     }
     
+    // MARK: - DataInteractor methods
     func getMangaPage(_ page: Int) async throws -> MangaPage {
         let dtoMangaPage: DTOMangaPage = try loadTestJSON(url: mangasURL)
         return dtoMangaPage.toModel
+    }
+    
+    func getMangas(beginsWith str: String) async throws -> [Manga] {
+        try await getMangaPage(1).items.filter { $0.title.starts(with: str) }
+    }
+    
+    func getMangas(contains str: String, page: Int) async throws -> MangaPage {
+        try await getMangaPage(1)
+    }
+    
+    func getManga(id: String) async throws -> Manga {
+        getAkira()
     }
     
     func getMangas(by filter: FilterBy, item: String, page: Int) async throws -> MangaPage {
@@ -42,6 +56,13 @@ struct PreviewInteractor: DataInteractor {
             MangaPage(items: dtoMangaPage.items.map(\.toModel).filter { $0.authors.contains { $0.id.uuidString == item }},
                       metadata: dtoMangaPage.metadata.toModel)
         }
+    }
+    
+    
+    
+    
+    func getAuthors(by str: String) async throws -> [Author] {
+        try await getAuthors().filter{ $0.fullName.contains(str) || $0.lastName.contains(str) }
     }
     
     func getAuthors() async throws -> [Author] {

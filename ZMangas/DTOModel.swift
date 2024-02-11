@@ -66,6 +66,16 @@ struct DTOGenre: Codable {
     let genre: String
 }
 
+struct DTOCustomSearch: Codable {
+    var searchTitle: String?
+    var searchAuthorFistName: String?
+    var searchAuthorLastName: String?
+    var searchGenres: [String]?
+    var searchThemes: [String]?
+    var searchDemographics: [String]?
+    var searchContains: Bool = false
+}
+
 // MARK: - toModel
 extension DTOMangaPage {
     var toModel: MangaPage {
