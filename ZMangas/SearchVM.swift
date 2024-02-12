@@ -60,10 +60,12 @@ final class SearchVM: ObservableObject {
             async let genres = interactor.getGenres()
             async let themes = interactor.getThemes()
             let criteria = try await (authors, demographics, genres, themes)
-            self.authors = criteria.0.sorted { $0.fullName < $1.fullName}
-            self.demographics = criteria.1.sorted {$0 < $1 }
-            self.genres = criteria.2.sorted {$0 < $1 }
-            self.themes = criteria.3.sorted {$0 < $1 }
+            await MainActor.run {
+                self.authors = criteria.0.sorted { $0.fullName < $1.fullName}
+                self.demographics = criteria.1.sorted {$0 < $1 }
+                self.genres = criteria.2.sorted {$0 < $1 }
+                self.themes = criteria.3.sorted {$0 < $1 }
+            }
         } catch {
             print(error)
         }

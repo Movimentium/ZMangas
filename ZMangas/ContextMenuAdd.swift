@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContextMenuAdd: ViewModifier {
     @EnvironmentObject var myMangasVM: MyMangasVM
-    
+    @Environment(\.modelContext) var context
+
     let manga: Manga
     
     func body(content: Content) -> some View {
@@ -19,7 +20,7 @@ struct ContextMenuAdd: ViewModifier {
                 let title = (isInMyDB ? "Ya está en mi colección" : "Añadir a mi colección \(manga.id)")
                 Button(title, systemImage: "heart.fill") {
                     if !isInMyDB {
-                        myMangasVM.addManga(manga)
+                        myMangasVM.addManga(manga, ctx: context)
                     }
                 }
             }

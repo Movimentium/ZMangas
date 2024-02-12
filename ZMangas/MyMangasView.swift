@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct MyMangasView: View {
+    @EnvironmentObject var vm: MyMangasVM
+
     var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            MangasList(mangas: $vm.myMangas)
+            .navigationTitle("Mis Mangas")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: Manga.self) { manga in
+                DetailView(manga: manga)
+            }
+        } //NavStack
     }
 }
 
