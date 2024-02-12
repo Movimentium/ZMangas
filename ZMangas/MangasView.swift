@@ -10,6 +10,7 @@ import SwiftUI
 struct MangasView: View {
     @EnvironmentObject var vm: MangasVM
     @EnvironmentObject var searchVM: SearchVM
+
     @State private var isGridMode = false
     
     var body: some View {
@@ -17,18 +18,19 @@ struct MangasView: View {
             Group {
                 if isGridMode {
                     MangasGrid(mangas: $vm.mangas,
-                               onAppearFunc: vm.loadNextPageIfNeeded,
-                               addToMyCollectionFunc: nil)
+                               onAppearFunc: vm.loadNextPageIfNeeded)
                 } else {
                     MangasList(mangas: $vm.mangas,
-                               onAppearFunc: vm.loadNextPageIfNeeded,
-                               addToMyCollectionFunc: nil) 
+                               onAppearFunc: vm.loadNextPageIfNeeded)
                 }
             }
             .navigationTitle("Mangas")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: Manga.self) { manga in
                 DetailView(manga: manga)
+            }
+            .refreshable {
+                vm.getMangas(resetting: true)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -60,6 +62,10 @@ struct MangasView: View {
         .sheet(isPresented: $searchVM.showFilter) {
             FilterView()
         }
+        .alert("Alerta", isPresented: $vm.showAlert) { } message: {
+            Text(vm.alertMsg)
+        }
+
       
     }
 }
@@ -70,4 +76,6 @@ struct MangasView: View {
 //        .environmentObject(SearchVM())
         .environmentObject(MangasVM.preview)
         .environmentObject(SearchVM.preview)
+        .environmentObject(MyMangasVM())
+
 }

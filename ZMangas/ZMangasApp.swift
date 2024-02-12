@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct ZMangasApp: App {
+    @StateObject var myMangasVM = MyMangasVM()
     @StateObject var vm = MangasVM()
     @StateObject var searchVM = SearchVM()
     @StateObject var bestMangasVM = BestMangasVM()
@@ -19,6 +20,7 @@ struct ZMangasApp: App {
                 .environmentObject(vm)
                 .environmentObject(searchVM)
                 .environmentObject(bestMangasVM)
+                .environmentObject(myMangasVM)
                 .onAppear {
                     print(URL.mangas)
                     print(URL.mangas(page: 2))

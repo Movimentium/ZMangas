@@ -66,6 +66,7 @@ final class MangasVM: ObservableObject {
                 isLoadingData = false
             }
         } catch {
+            await errorsHandle(error)
             print(error)
         }
     }
@@ -76,7 +77,6 @@ final class MangasVM: ObservableObject {
     private(set) var filterItem = ""
     
     func getMangas(by filter: FilterBy, item: String) {
-        isFilterActive = true
         filterBy = filter
         filterItem = item
         reset()
@@ -92,10 +92,22 @@ final class MangasVM: ObservableObject {
                 mangas += mangaByPage.items
                 metaData = mangaByPage.metadata
                 isLoadingData = false
+                isFilterActive = true
             }
         } catch {
+            await errorsHandle(error)
             print(error)
-            //isFilterActive = false
+        }
+    }
+    
+    // MARK: - Errors Handle ===========================================================
+    @Published var showAlert = false
+    @Published var alertMsg = ""
+    
+    private func errorsHandle(_ error: Error) async {
+        await MainActor.run {
+            alertMsg = "\(error)"
+            showAlert = true
         }
     }
 }

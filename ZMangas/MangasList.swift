@@ -10,19 +10,14 @@ import SwiftUI
 struct MangasList: View {
     @Binding var mangas: [Manga]
     var onAppearFunc: ((Manga) -> Void)?
-    var addToMyCollectionFunc: ((Manga) -> Void)?
-    
+
     var body: some View {
         List(mangas) { manga in
             MangaRowView(manga: manga)
-            .contextMenu {
-                Button("Añadir a mi colección", systemImage: "heart.fill") {
-                    addToMyCollectionFunc?(manga)
-                }
-            }   
             .onAppear {
                 onAppearFunc?(manga)
             }
+            .modifier(ContextMenuAdd(manga: manga))
         }
     }
 }

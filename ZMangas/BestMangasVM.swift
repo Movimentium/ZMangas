@@ -9,7 +9,8 @@ import Foundation
 
 final class BestMangasVM: ObservableObject {
     let interactor: DataInteractor
-    
+    @Published var showAlert = false
+    @Published var alertMsg = ""
     @Published var bestMangas: [Manga] = []
     private var metaData = MetaData(total: 0, page: 0, per: 0)
     
@@ -21,7 +22,7 @@ final class BestMangasVM: ObservableObject {
         getBestMangas()
     }
     
-    private func getBestMangas() {
+    func getBestMangas() {
         page = 0
         bestMangas = []
         Task {
@@ -39,6 +40,10 @@ final class BestMangasVM: ObservableObject {
             }
         } catch {
             print(error)
+            await MainActor.run {
+                alertMsg = "\(error)"
+                showAlert = true 
+            }
         }
     }
     

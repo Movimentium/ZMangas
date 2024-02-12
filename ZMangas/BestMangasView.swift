@@ -16,18 +16,19 @@ struct BestMangasView: View {
             Group {
                 if isGridMode {
                     MangasGrid(mangas: $vm.bestMangas,
-                               onAppearFunc: vm.loadNextPageIfNeeded,
-                               addToMyCollectionFunc: nil)
+                               onAppearFunc: vm.loadNextPageIfNeeded)
                 } else {
                     MangasList(mangas: $vm.bestMangas,
-                               onAppearFunc: vm.loadNextPageIfNeeded, 
-                               addToMyCollectionFunc: nil)
+                               onAppearFunc: vm.loadNextPageIfNeeded)
                 }
             }
             .navigationTitle("Best Mangas")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: Manga.self) { manga in
                 DetailView(manga: manga)
+            }
+            .refreshable {
+                vm.getBestMangas()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -39,6 +40,9 @@ struct BestMangasView: View {
                 }
             } //.toolbar
         } //NavStack
+        .alert("Alerta", isPresented: $vm.showAlert) { } message: {
+            Text(vm.alertMsg)
+        }
     }
 }
 

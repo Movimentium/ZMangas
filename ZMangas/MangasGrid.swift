@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MangasGrid: View {
+
     @Binding var mangas: [Manga]
     var onAppearFunc: ((Manga) -> Void)?
-    var addToMyCollectionFunc: ((Manga) -> Void)?
 
     private let gridItem = GridItem(.adaptive(minimum: 150))
     
@@ -29,11 +29,7 @@ struct MangasGrid: View {
                     .onAppear {
                         onAppearFunc?(manga)
                     }
-                    .contextMenu {
-                        Button("Añadir a mi colección", systemImage: "heart.fill") {
-                            addToMyCollectionFunc?(manga)
-                        }
-                    }
+                    .modifier(ContextMenuAdd(manga: manga))
                 }
             }
             .padding()
