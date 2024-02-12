@@ -6,16 +6,28 @@
 //
 
 import Foundation
+import SwiftData
 
 final class MyMangasVM: ObservableObject {
     let interactor: DataInteractor
+    let context: ModelContext
+    
+    var myMangas: Set<Manga> = []
     
     init(interactor: DataInteractor = Network()) {
+        print(Self.self, #function)
         self.interactor = interactor
-        
+        do {
+            let container = try ModelContainer(for: DBManga.self)
+            context = ModelContext(container)
+            try getMisMangas()
+        } catch {
+            print(error)
+            fatalError("Error al obtener la DB")
+        }
     }
     
-    private var setIds: Set<Int> = [1, 2, 3] {
+    private var setIds: Set<Int> = [] {
         didSet {
             print(setIds)
         }
@@ -25,15 +37,27 @@ final class MyMangasVM: ObservableObject {
         setIds.contains(id)
     }
     
-    func getMisMasgas() {
-        
+    func getMisMangas() throws {
+        print(Self.self, #function)
+
+        var query = FetchDescriptor<DBManga>()
+        let items = try context.fetch(query)
+        print("items: \(items)")
+//        items.forEach { print($0) }
     }
     
     func addManga(_ manga: Manga) {
+        print(Self.self, #function)
+ 
+        // si no existe añadir
+        let newDBManga = DBManga(id: manga.id)
+        context.insert(newDBManga)
+        let _ = try? context.save()
+        myMangas.insert(manga)
         setIds.insert(manga.id)
         objectWillChange.send()
     }
-    //  add manga
+
     
     // delete manga
     

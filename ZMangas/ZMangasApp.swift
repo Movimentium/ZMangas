@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct ZMangasApp: App {
@@ -22,10 +23,9 @@ struct ZMangasApp: App {
                 .environmentObject(bestMangasVM)
                 .environmentObject(myMangasVM)
                 .onAppear {
-                    print(URL.mangas)
-                    print(URL.mangas(page: 2))
-                    print(URL.mangas(by: .genre, item: "romance", page: 2))
+                    print(URL.documentsDirectory)
                 }
         }
+        .modelContainer(for: DBManga.self)
     }
 }
