@@ -14,7 +14,7 @@ final class MangasVM: ObservableObject {
     private var metaData = MetaData(total: 0, page: 0, per: 0)
     
     private var page = 1
-    @Published var isLoadingData = false
+    private var isLoadingData = false
     
     init(interactor: DataInteractor = Network()) {
         self.interactor = interactor

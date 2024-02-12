@@ -15,12 +15,14 @@ struct MangasView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if (isGridMode) {
+                if isGridMode {
                     MangasGrid(mangas: $vm.mangas,
-                               onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
+                               onAppearFunc: vm.loadNextPageIfNeeded,
+                               addToMyCollectionFunc: nil)
                 } else {
                     MangasList(mangas: $vm.mangas,
-                               onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
+                               onAppearFunc: vm.loadNextPageIfNeeded,
+                               addToMyCollectionFunc: nil) 
                 }
             }
             .navigationTitle("Mangas")
@@ -54,7 +56,7 @@ struct MangasView: View {
                     }
                 }
             } //.toolbar
-        }
+        } //NavStack
         .sheet(isPresented: $searchVM.showFilter) {
             FilterView()
         }

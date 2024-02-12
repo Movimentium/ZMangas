@@ -31,4 +31,5 @@ struct MangasTabView: View {
     MangasTabView()
         .environmentObject(MangasVM.preview)
         .environmentObject(SearchVM.preview)
+        .environmentObject(BestMangasVM.preview)
 }

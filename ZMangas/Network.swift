@@ -14,6 +14,7 @@ protocol DataInteractor {
     func getMangas(beginsWith str: String) async throws -> [Manga]
     func getMangas(contains str: String, page: Int) async throws -> MangaPage
 //    func getMangas(customQuery query: DTOCustomSearch, page: Int) -> MangaPage  //TODO:REVIEW:
+    func getBestMangas(page: Int) async throws -> MangaPage
     func getAuthors(by str: String) async throws -> [Author]
     
     // Filter criteria
@@ -77,6 +78,11 @@ struct Network: DataInteractor {
 //        return dtoMangaPage.toModel
 //    }
 
+    func getBestMangas(page: Int) async throws -> MangaPage {
+        try await getJSON(request: .get(url: .bestMangas(page: page)),
+                          type: DTOMangaPage.self).toModel
+    }
+    
     func getAuthors(by str: String) async throws -> [Author] {
         try await getJSON(request: .get(url: .mangas(search: .author, str: str)),
                           type: [DTOAuthor].self).map(\.toModel)

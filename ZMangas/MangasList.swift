@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MangasList: View {
     @Binding var mangas: [Manga]
-    var onAppearNewMangaFunc: ((Manga) -> Void)?
+    var onAppearFunc: ((Manga) -> Void)?
     var addToMyCollectionFunc: ((Manga) -> Void)?
     
     var body: some View {
@@ -21,7 +21,7 @@ struct MangasList: View {
                 }
             }   
             .onAppear {
-                onAppearNewMangaFunc?(manga)
+                onAppearFunc?(manga)
             }
         }
     }

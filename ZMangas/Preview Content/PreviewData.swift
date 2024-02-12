@@ -8,7 +8,6 @@
 import Foundation
 
 struct PreviewInteractor: DataInteractor {
-
     let akiraURL = Bundle.main.url(forResource: "Akira", withExtension: "json")!
     let mangasURL = Bundle.main.url(forResource: "Mangas100", withExtension: "json")!
     let bestMangasURL = Bundle.main.url(forResource: "BestMangas100", withExtension: "json")!
@@ -71,6 +70,11 @@ struct PreviewInteractor: DataInteractor {
         try await getAuthors().filter{ $0.fullName.contains(str) || $0.lastName.contains(str) }
     }
     
+    func getBestMangas(page: Int) async throws -> MangaPage {
+        let dtoMangapage: DTOMangaPage = try loadTestJSON(url: bestMangasURL)
+        return dtoMangapage.toModel
+    }
+    
     func getAuthors() async throws -> [Author] {
         let arrDtoAuthors: [DTOAuthor] = try loadTestJSON(url: authorsURL)
         return arrDtoAuthors.map(\.toModel)
@@ -100,6 +104,10 @@ extension MangasVM {
 
 extension SearchVM {
     static let preview = SearchVM(interactor: PreviewInteractor())
+}
+
+extension BestMangasVM {
+    static let preview = BestMangasVM(interactor: PreviewInteractor())
 }
 
 extension Manga {

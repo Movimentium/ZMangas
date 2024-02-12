@@ -16,7 +16,7 @@ struct DetailView: View {
             LazyVStack {
                 Text(manga.title)
                     .font(.title)
-                BookCoverView(coverURL: manga.coverURL, mode: .grid)
+                BookCoverView(coverURL: manga.coverURL, mode: .big)
                 
                 VStack(alignment: .leading) {
                     Text(manga.authorsFullNames)

@@ -21,6 +21,10 @@ extension URL {
     static func mangas(page: Int) -> URL {
         Self.mangas.appendingPagingIfNeeded(page: page)
     }
+    
+    static func bestMangas(page: Int) -> URL {
+        Self.bestMangas.appendingPagingIfNeeded(page: page)
+    }
         
     // MARK: - MangaBy...
     static func mangas(by: FilterBy, item: String, page: Int) -> URL {

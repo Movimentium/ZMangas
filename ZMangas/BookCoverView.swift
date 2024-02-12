@@ -10,28 +10,28 @@ import SwiftUI
 struct BookCoverView: View {
     let coverURL: URL?
     let mode: Mode
+    private let w: CGFloat
     
-    lazy var w = {
+    init(coverURL: URL?, mode: Mode) {
+        self.coverURL = coverURL
+        self.mode = mode
         switch mode {
-        case .row:
-            80
-        case .grid:
-            160
-        case .big:
-            200
+        case .row:   w = 80
+        case .grid:  w = 160
+        case .big:   w =  300
         }
-    }()
+    }
     
     var body: some View {
         AsyncImage(url: coverURL) { cover in
             cover.resizable()
                 .scaledToFit()
-                .frame(width: mode == .row ? 80 : 160)
+                .frame(width: w)
         } placeholder: {
             Image(systemName: "a.book.closed.ja")
                 .resizable()
                 .scaledToFit()
-                .frame(width: mode == .row ? 80 : 160)
+                .frame(width: w)
                 .fontWeight(.ultraLight)
         }
         .shadow(color: .black.opacity(0.3), 
