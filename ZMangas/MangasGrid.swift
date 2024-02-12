@@ -17,11 +17,14 @@ struct MangasGrid: View {
         ScrollView {
             LazyVGrid(columns: [gridItem]) {
                 ForEach(mangas) { manga in
-                    VStack(alignment: .center) {
-                        BookCoverView(coverURL: manga.coverURL, mode: .grid)
-                        Text(manga.title)
-                            .font(.headline)
+                    NavigationLink(value: manga) {
+                        VStack(alignment: .center) {
+                            BookCoverView(coverURL: manga.coverURL, mode: .grid)
+                            Text(manga.title)
+                                .font(.headline)
+                        }
                     }
+                    .buttonStyle(.plain)
                     .onAppear {
                         onAppearNewMangaFunc?(manga)
                     }

@@ -23,7 +23,7 @@ struct Manga: Codable, Identifiable, Hashable {
     let title: String
     let titleJapanese: String?
     let titleEnglish: String?
-    let score: Float
+    let score: String
     
     let startDate: String?
     let endDate: String?
@@ -81,6 +81,31 @@ extension Manga {
     var strThemes: String {
         themes.reduce("") { ($0.isEmpty ? $0 : "\($0), ") + $1.theme}
     }
+    
+    var strVolumes: String {
+        if let vols = volumes {
+            return "\(vols)"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var strChapters: String {
+        if let chapts = chapters {
+            return "\(chapts)"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var strStartDate: String {
+        U.strDate(from: startDate)
+    }
+    
+    var strEndDate: String {
+        U.strDate(from: endDate)
+    }
+    
 }
 
 extension Author {

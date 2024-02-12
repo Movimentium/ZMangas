@@ -22,24 +22,37 @@ struct DetailView: View {
                     Text(manga.authorsFullNames)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical)
-                        .border(Color.pink)
-                    // genero temática, demografía
-                    // score, volumes, chapters
+                    VStack(alignment: .leading) {
+                        MiniRowDetail(lbl: FilterBy.genre.name, txt: manga.strGenres)
+                        MiniRowDetail(lbl: FilterBy.theme.name, txt: manga.strThemes)
+                        MiniRowDetail2Columns(lbl1: FilterBy.demographic.name,
+                                              txt1: manga.strDemographics,
+                                              lbl2: "Volúmenes", 
+                                              txt2: manga.strVolumes)
+                        MiniRowDetail2Columns(lbl1: "Fecha inicio",
+                                              txt1: manga.strStartDate,
+                                              lbl2: "Capítulos",
+                                              txt2: manga.strChapters)
+                        MiniRowDetail2Columns(lbl1: "Fecha fin",
+                                              txt1: manga.strEndDate,
+                                              lbl2: "Score",
+                                              txt2: manga.score)
+                        MiniRowDetail(lbl: "Estado", txt: manga.status)
+                    }
+                    .padding(.bottom, 4)
                     if let sypnosis = manga.sypnosis {
                         Text("Sinopsis")
-                            .font(.caption).bold()
+                            .font(.headline)
                         Text(sypnosis)
-                            .font(.callout).foregroundStyle(Color.black.opacity(0.8))
+                            .font(.callout).foregroundStyle(.gray)
                     }
                     if let background = manga.background {
                         Text("Background")
-                            .font(.caption).bold().padding(.top, 8)
+                            .font(.headline).padding(.top, 8)
                         Text(background)
-                            .font(.callout)
+                            .font(.callout).foregroundStyle(.gray)
                     }
                 }
-                .border(Color.pink)
-              
             }
             .padding(.horizontal)
         }
@@ -48,13 +61,42 @@ struct DetailView: View {
         .onAppear {
             print(manga.title)
         }
-        
-        
     }
 }
     
 #Preview {
     NavigationStack {
         DetailView(manga: .akira)
+    }
+}
+
+struct MiniRowDetail: View {
+    let lbl: String
+    let txt: String
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            Text(lbl)
+                .font(.caption)
+                .bold()
+            Text(txt)
+                .font(.caption)
+                .foregroundStyle(.gray)
+        }
+    }
+}
+
+struct MiniRowDetail2Columns: View {
+    let lbl1: String
+    let txt1: String
+    let lbl2: String
+    let txt2: String
+    
+    var body: some View {
+        HStack {
+            MiniRowDetail(lbl: lbl1, txt: txt1)
+            Spacer()
+            MiniRowDetail(lbl: lbl2, txt: txt2)
+        }
     }
 }

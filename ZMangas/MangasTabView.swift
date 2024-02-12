@@ -10,12 +10,11 @@ import SwiftUI
 struct MangasTabView: View {
     var body: some View {
         TabView {
-            ContentView()
+            MangasView()
                 .tabItem {
                     Label("Mangas", systemImage: "list.star")
                 }
-//            /*BestMangasView*/()
-            GridView()
+            BestMangasView()
                 .tabItem {
                     Label("Best Mangas", systemImage: "star.fill")
                 }
@@ -30,4 +29,6 @@ struct MangasTabView: View {
 
 #Preview {
     MangasTabView()
+        .environmentObject(MangasVM.preview)
+        .environmentObject(SearchVM.preview)
 }

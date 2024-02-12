@@ -95,7 +95,7 @@ extension DTOManga {
               title: title,
               titleJapanese: titleJapanese,
               titleEnglish: title,
-              score: score,
+              score: score.formatted(.number),
               startDate: startDate,
               endDate: endDate,
               status: status,

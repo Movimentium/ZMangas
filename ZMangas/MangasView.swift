@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MangasView.swift
 //  ZMangas
 //
 //  Created by Miguel Gallego on 5/2/24.
@@ -7,23 +7,24 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MangasView: View {
     @EnvironmentObject var vm: MangasVM
     @EnvironmentObject var searchVM: SearchVM
     @State private var isGridMode = false
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            Group {
+                if (isGridMode) {
                     MangasGrid(mangas: $vm.mangas,
                                onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
-                    .opacity(isGridMode ? 1 : 0)
+                } else {
                     MangasList(mangas: $vm.mangas,
-                              onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
-                    .opacity(isGridMode ? 0 : 1)
-
+                               onAppearNewMangaFunc: vm.loadNextPageIfNeeded)
+                }
             }
             .navigationTitle("Mangas")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: Manga.self) { manga in
                 DetailView(manga: manga)
             }
@@ -62,7 +63,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MangasView()
 //        .environmentObject(MangasVM())
 //        .environmentObject(SearchVM())
         .environmentObject(MangasVM.preview)
