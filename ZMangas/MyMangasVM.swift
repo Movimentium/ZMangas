@@ -13,11 +13,6 @@ final class MyMangasVM: ObservableObject {
     let context: ModelContext
     
     @Published var myMangas: [MyManga] = []
-    private var setOfIds: Set<Int> = [] {
-        didSet {
-            print(setOfIds)
-        }
-    }
 
     init(interactor: DataInteractor = Network()) {
         print(Self.self, #function)
@@ -34,7 +29,7 @@ final class MyMangasVM: ObservableObject {
     }
 
     func isInMyDB(id: Int) -> Bool {
-        setOfIds.contains(id)
+        myMangas.contains { $0.id == id }
     }
         
     func getMyMangas() throws {
@@ -42,14 +37,11 @@ final class MyMangasVM: ObservableObject {
         myMangas = []
         let query = FetchDescriptor<DBManga>()
         let dbMangas = try context.fetch(query)
-        print("items: ")
-        dbMangas.forEach {
-            print($0)
-            setOfIds.insert($0.id)
-        }
         Task {
             await getMangasByIds(for: dbMangas)
         }
+        
+        print("items: ");  dbMangas.forEach { print($0) }
     }
     
     func addManga(_ manga: Manga, ctx: ModelContext) {
@@ -59,7 +51,6 @@ final class MyMangasVM: ObservableObject {
         ctx.insert(newDBManga)
         let myManga = MyManga(manga: manga, dbManga: newDBManga)
         myMangas.append(myManga)
-        setOfIds.insert(manga.id)
     }
     
     func deleteManga(_ myManga: MyManga) {
@@ -72,13 +63,11 @@ final class MyMangasVM: ObservableObject {
             print(mangaToDelete)
             myMangas.removeAll { $0.id == mangaId }
             context.delete(mangaToDelete)
-            setOfIds.remove(mangaId)
         } else {
             print("Error en al borrar")
         }
     }
 
-    
     private func getMangasByIds(for dbMangas: [DBManga]) async {
         do {
             for dbManga in dbMangas {
@@ -93,5 +82,4 @@ final class MyMangasVM: ObservableObject {
             print(error)
         }
     }
-    
 }

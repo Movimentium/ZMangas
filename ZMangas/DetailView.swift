@@ -8,23 +8,12 @@
 import SwiftUI
 
 struct DetailView: View {
-    
     let manga: Manga
     var dbManga: DBManga?
     @State private var isEditMode = false
     @State private var volumesIHave: Int = 0
     @State private var volumeIamReading: Int = 0
     @State private var isCompleteCollection: Bool = false
-    
-    init(manga: Manga, dbManga: DBManga? = nil) {
-        self.manga = manga
-        self.dbManga = dbManga
-        if let dbm = dbManga {
-            volumesIHave = dbm.volumesIHave
-            volumeIamReading = dbm.volumeIamReading
-            isCompleteCollection = dbm.isCompleteCollection
-        }
-    }
     
     var body: some View {
         ScrollView {
@@ -66,14 +55,8 @@ struct DetailView: View {
                             Stepper(value: $volumeIamReading, in: rangeReadind) {
                                 Text("Volumen por el que voy: \(volumeIamReading)")
                             }
-                            if let vols = manga.volumes, vols == volumesIHave {
-                                Toggle(isOn: .constant(true)) {
-                                    Text("Tengo la colección completa")
-                                }
-                            } else {
-                                Toggle(isOn: $isCompleteCollection) {
-                                    Text("Tengo la colección completa")
-                                }
+                            Toggle(isOn: $isCompleteCollection) {
+                                Text("Tengo la colección completa:")
                             }
                         }
                         .disabled(!isEditMode)
@@ -98,20 +81,29 @@ struct DetailView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            print(manga.title)
+            print("manga.title: \(manga.title), manga.id: \(manga.id)")
+            if let dbm = dbManga {
+                print("dbManga: \(dbm)")
+                self.volumesIHave = dbManga!.volumesIHave
+                self.volumeIamReading = dbManga!.volumeIamReading
+                self.isCompleteCollection = dbManga!.isCompleteCollection
+            }
+
         }
         .toolbar {
-            if dbManga != nil {
+            if let dbm = dbManga {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(isEditMode ? "Guardar" : "Editar") {
                         if isEditMode {
-                            
+                            dbm.volumeIamReading = volumeIamReading
+                            dbm.isCompleteCollection = isCompleteCollection
+                            dbm.volumesIHave = volumesIHave
                         }
                         isEditMode.toggle()
                     }
                 }
             }
-        }
+        }//.toolbar
     }
 }
     
