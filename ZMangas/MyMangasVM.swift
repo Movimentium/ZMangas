@@ -12,77 +12,83 @@ final class MyMangasVM: ObservableObject {
     let interactor: DataInteractor
     let context: ModelContext
     
-    @Published var myMangas: [Manga] = []
-    var myDBMangas: [DBManga] = []
-    
+    @Published var myMangas: [MyManga] = []
+    private var setOfIds: Set<Int> = [] {
+        didSet {
+            print(setOfIds)
+        }
+    }
+
     init(interactor: DataInteractor = Network()) {
         print(Self.self, #function)
         self.interactor = interactor
         do {
             let container = try ModelContainer(for: DBManga.self)
             context = ModelContext(container)
+            context.autosaveEnabled = true
             try getMyMangas()
         } catch {
             print(error)
             fatalError("Error al obtener la DB")
         }
     }
-    
-    private var setOfIds: Set<Int> = [] {
-        didSet {
-            print(setOfIds)
-        }
-    }
-    
+
     func isInMyDB(id: Int) -> Bool {
         setOfIds.contains(id)
     }
-    
+        
     func getMyMangas() throws {
         print(Self.self, #function)
-
+        myMangas = []
         let query = FetchDescriptor<DBManga>()
-        let items = try context.fetch(query)
+        let dbMangas = try context.fetch(query)
         print("items: ")
-        items.forEach {
+        dbMangas.forEach {
             print($0)
             setOfIds.insert($0.id)
         }
         Task {
-            await getMangasByIds()
+            await getMangasByIds(for: dbMangas)
         }
-        
     }
     
     func addManga(_ manga: Manga, ctx: ModelContext) {
         print(Self.self, #function)
  
-        // si no existe añadir
         let newDBManga = DBManga(id: manga.id)
         ctx.insert(newDBManga)
-//        myMangas.insert(manga)
-        myMangas.append(manga)
+        let myManga = MyManga(manga: manga, dbManga: newDBManga)
+        myMangas.append(myManga)
         setOfIds.insert(manga.id)
-        objectWillChange.send()
+    }
+    
+    func deleteManga(_ myManga: MyManga) {
+        print(Self.self, #function)
+        let mangaId = myManga.id
+        
+        var query = FetchDescriptor<DBManga>()
+        query.predicate = #Predicate { $0.id == mangaId }
+        if let mangaToDelete = try? context.fetch(query).first {
+            print(mangaToDelete)
+            myMangas.removeAll { $0.id == mangaId }
+            context.delete(mangaToDelete)
+            setOfIds.remove(mangaId)
+        } else {
+            print("Error en al borrar")
+        }
     }
 
     
-    // delete manga
-    
-    private func getMangasByIds() async {
-        var arrMangas: [Manga] = []
+    private func getMangasByIds(for dbMangas: [DBManga]) async {
         do {
-            for id in setOfIds {
-                let manga = try await interactor.getManga(id: "\(id)")
+            for dbManga in dbMangas {
+                let id = "\(dbManga.id)"
+                let manga = try await interactor.getManga(id: id)
                 await MainActor.run {
-//                    self.myMangas.insert(manga)
-                    self.myMangas.append(manga)
+                    let myManga = MyManga(manga: manga, dbManga: dbManga)
+                    self.myMangas.append(myManga)
                 }
-//                arrMangas.append(manga)
             }
-//            await MainActor.run { [weak self] in
-//                self?.myMangas = arrMangas
-//            }
         } catch {
             print(error)
         }

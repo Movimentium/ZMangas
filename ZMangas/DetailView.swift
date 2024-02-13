@@ -10,6 +10,21 @@ import SwiftUI
 struct DetailView: View {
     
     let manga: Manga
+    var dbManga: DBManga?
+    @State private var isEditMode = false
+    @State private var volumesIHave: Int = 0
+    @State private var volumeIamReading: Int = 0
+    @State private var isCompleteCollection: Bool = false
+    
+    init(manga: Manga, dbManga: DBManga? = nil) {
+        self.manga = manga
+        self.dbManga = dbManga
+        if let dbm = dbManga {
+            volumesIHave = dbm.volumesIHave
+            volumeIamReading = dbm.volumeIamReading
+            isCompleteCollection = dbm.isCompleteCollection
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -40,6 +55,30 @@ struct DetailView: View {
                         MiniRowDetail(lbl: "Estado", txt: manga.status)
                     }
                     .padding(.bottom, 4)
+                    
+                    if dbManga != nil  {
+                        Group {
+                            let rangeVols = 0...(manga.volumes ?? 100)
+                            Stepper(value: $volumesIHave, in: rangeVols) {
+                                Text("Volumenes que tengo: \(volumesIHave)")
+                            }
+                            let rangeReadind = 0...volumesIHave
+                            Stepper(value: $volumeIamReading, in: rangeReadind) {
+                                Text("Volumen por el que voy: \(volumeIamReading)")
+                            }
+                            if let vols = manga.volumes, vols == volumesIHave {
+                                Toggle(isOn: .constant(true)) {
+                                    Text("Tengo la colección completa")
+                                }
+                            } else {
+                                Toggle(isOn: $isCompleteCollection) {
+                                    Text("Tengo la colección completa")
+                                }
+                            }
+                        }
+                        .disabled(!isEditMode)
+                    }
+                    
                     if let sypnosis = manga.sypnosis {
                         Text("Sinopsis")
                             .font(.headline)
@@ -61,6 +100,18 @@ struct DetailView: View {
         .onAppear {
             print(manga.title)
         }
+        .toolbar {
+            if dbManga != nil {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(isEditMode ? "Guardar" : "Editar") {
+                        if isEditMode {
+                            
+                        }
+                        isEditMode.toggle()
+                    }
+                }
+            }
+        }
     }
 }
     
@@ -70,6 +121,8 @@ struct DetailView: View {
     }
 }
 
+
+//TODO: Poner en archivo aparte
 struct MiniRowDetail: View {
     let lbl: String
     let txt: String

@@ -24,3 +24,10 @@ final class DBManga: CustomStringConvertible {
     }
 }
 
+struct MyManga: Identifiable, Hashable {
+    var id: Int {
+        return dbManga.id
+    }
+    var manga: Manga
+    var dbManga: DBManga
+}

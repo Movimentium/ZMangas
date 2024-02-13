@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MangaRowView: View {
     let manga: Manga
-
+    
     var body: some View {
         NavigationLink(value: manga) {
             HStack(alignment: .top) {

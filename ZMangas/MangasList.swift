@@ -11,6 +11,7 @@ struct MangasList: View {
     @Binding var mangas: [Manga]
     var onAppearFunc: ((Manga) -> Void)?
 
+    
     var body: some View {
         List(mangas) { manga in
             MangaRowView(manga: manga)
