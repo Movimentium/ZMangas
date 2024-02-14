@@ -73,7 +73,7 @@ final class SearchVM: ObservableObject {
 
     var isValidSelection: Bool {
         if itemToFilter.isEmpty {
-            //TODO: mostrar alerta
+            //TODO: mostrar alerta??
             return false
         } else {
             showFilter = false 

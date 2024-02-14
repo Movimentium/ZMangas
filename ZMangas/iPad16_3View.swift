@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-fileprivate enum SideItem: String, CaseIterable {
+enum SideItem: String, CaseIterable {
     case mangas = "Mangas"
     case bestMangas = "Best Mangas"
     case myCollection = "Mi Colección"
@@ -27,15 +27,25 @@ fileprivate enum SideItem: String, CaseIterable {
         case .myCollection:  MyMangasView()
         }
     }
+    
+    func toolBar(isGridMode: Binding<Bool>) -> some ViewModifier {
+        switch self {
+        case .mangas:  ToolBarMangas(isGridMode: isGridMode)
+        default:   ToolBarMangas(isGridMode: isGridMode)
+//        case .bestMangas:  BestMangasView()
+//        case .myCollection:  MyMangasView()
+        }
+    }
+
 }
-/*
- */
+
 struct iPad16_3View: View {
     @EnvironmentObject var myMangasVM: MyMangasVM
     @EnvironmentObject var vm: MangasVM
     @EnvironmentObject var searchVM: SearchVM
     @EnvironmentObject var bestMangasVM: BestMangasVM
 
+    @State private var isGridMode = false
     
     @State private var visibility = NavigationSplitViewVisibility.all
     @State private var sideItemSelected: SideItem? = .mangas
@@ -57,7 +67,14 @@ struct iPad16_3View: View {
             }
             .navigationSplitViewColumnWidth(min: 400, ideal: 400, max: 400)
         } detail: {
-            Text("detail")
+            switch sideItemSelected {
+            case .none, .some(.mangas), .some(.bestMangas):
+                if let seletedManga = vm.selectedMangaForIPad {
+                    DetailView(manga: seletedManga)
+                }
+            case .some(.myCollection):  MyMangasView()
+            }
+
         }
         .navigationSplitViewStyle(.balanced)
     }

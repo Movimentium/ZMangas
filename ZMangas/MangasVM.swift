@@ -11,6 +11,7 @@ final class MangasVM: ObservableObject {
     let interactor: DataInteractor
     
     @Published var mangas: [Manga] = []
+    var selectedMangaForIPad: Manga? 
     private var metaData = MetaData.zero
     
     private var page = 1

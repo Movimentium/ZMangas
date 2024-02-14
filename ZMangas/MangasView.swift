@@ -26,45 +26,15 @@ struct MangasView: View {
             }
             .navigationTitle("Mangas")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: Manga.self) { manga in
-                DetailView(manga: manga)
-            }
+            .modifier(NavDestinationModifier(sideItem: .mangas))
+            
+//            .navigationDestination(for: Manga.self) { manga in
+//                DetailView(manga: manga)
+//            }
             .refreshable {
                 vm.getMangas(resetting: true)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        if vm.isFilterActive {
-                            vm.getMangas(resetting: true)
-                        } else {
-                            searchVM.showFilter = true
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .symbolVariant(vm.isFilterActive ? .fill: .none)
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        if vm.isSearchActive {
-                            vm.getMangas(resetting: true)
-                        } else {
-                            searchVM.showSearch = true
-                        }
-                    } label: {
-                        Image(systemName: "magnifyingglass.circle")
-                            .symbolVariant(vm.isSearchActive ? .fill: .none)
-                    }
-                }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        isGridMode.toggle()
-                    } label: {
-                        Image(systemName: isGridMode ? "rectangle.grid.1x2" : "square.grid.2x2")
-                    }
-                }
-            } //.toolbar
+            .modifier(ToolBarMangas(isGridMode: $isGridMode))
         } //NavStack
         .sheet(isPresented: $searchVM.showFilter) {
             FilterView()
@@ -75,8 +45,6 @@ struct MangasView: View {
         .alert("Alerta", isPresented: $vm.showAlert) { } message: {
             Text(vm.alertMsg)
         }
-
-      
     }
 }
 

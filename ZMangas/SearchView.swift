@@ -32,7 +32,7 @@ struct SearchView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") {
-                        vm.showFilter = false
+                        vm.showSearch = false
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
