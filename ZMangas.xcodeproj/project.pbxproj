@@ -13,6 +13,7 @@
 		0C1E36F92B768B200050E94E /* BestMangasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1E36F82B768B200050E94E /* BestMangasView.swift */; };
 		0C1E36FB2B768B300050E94E /* MyMangasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1E36FA2B768B300050E94E /* MyMangasView.swift */; };
 		0C1E36FD2B768B790050E94E /* MangasTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1E36FC2B768B790050E94E /* MangasTabView.swift */; };
+		0C300DB32B7C21D400E47381 /* iPad16_3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C300DB22B7C21D400E47381 /* iPad16_3View.swift */; };
 		0C3AC2E32B756D2A0058A91B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3AC2E22B756D2A0058A91B /* Enums.swift */; };
 		0C3AC2E72B7583200058A91B /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3AC2E62B7583200058A91B /* SearchVM.swift */; };
 		0C5189632B73D2C100D7E0EA /* TestMangaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */; };
@@ -56,6 +57,7 @@
 		0C1E36F82B768B200050E94E /* BestMangasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMangasView.swift; sourceTree = "<group>"; };
 		0C1E36FA2B768B300050E94E /* MyMangasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMangasView.swift; sourceTree = "<group>"; };
 		0C1E36FC2B768B790050E94E /* MangasTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasTabView.swift; sourceTree = "<group>"; };
+		0C300DB22B7C21D400E47381 /* iPad16_3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPad16_3View.swift; sourceTree = "<group>"; };
 		0C3AC2E22B756D2A0058A91B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0C3AC2E62B7583200058A91B /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		0C5189622B73D2C100D7E0EA /* TestMangaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMangaDetail.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		0C300DB12B7C21A800E47381 /* iPadViews */ = {
+			isa = PBXGroup;
+			children = (
+				0C300DB22B7C21D400E47381 /* iPad16_3View.swift */,
+			);
+			name = iPadViews;
+			sourceTree = "<group>";
+		};
 		0C5189642B73ECD500D7E0EA /* TestViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 				0CD208782B75613000A5532A /* FilterView.swift */,
 				0CB0E5B62B76E0C40061FBC7 /* DetailView.swift */,
 				0C5B03592B7A637000B05F59 /* Utils.swift */,
+				0C300DB12B7C21A800E47381 /* iPadViews */,
 				0C1E36FE2B768EED0050E94E /* Components */,
 				0C5189642B73ECD500D7E0EA /* TestViews */,
 				0C805F622B71A6A3007816FA /* ViewModel */,
@@ -331,6 +342,7 @@
 				0C805F642B71A6BA007816FA /* MangasVM.swift in Sources */,
 				0CA3EE062B7AC14700AB6128 /* ContextMenuAdd.swift in Sources */,
 				0C1E36F92B768B200050E94E /* BestMangasView.swift in Sources */,
+				0C300DB32B7C21D400E47381 /* iPad16_3View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +491,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = miguel.gallego.ZMangas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -508,6 +523,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = miguel.gallego.ZMangas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
