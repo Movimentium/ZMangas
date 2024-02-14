@@ -29,14 +29,8 @@ struct BestMangasView: View {
                 vm.getBestMangas()
             }
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        isGridMode.toggle()
-                    } label: {
-                        Image(systemName: isGridMode ? "rectangle.grid.1x2" : "square.grid.2x2")
-                    }
-                }
-            } //.toolbar
+                ToolBarItemGridMode(isGridMode: $isGridMode)
+            }
         } //NavStack
         .alert("Alerta", isPresented: $vm.showAlert) { } message: {
             Text(vm.alertMsg)
