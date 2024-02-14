@@ -21,7 +21,7 @@ struct SearchView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                XTextField(title: "Escribe al menos 4 caracteres",
+                XTextField(title: "Escribe al menos 3 caracteres",
                            placeholder: "Escribe aquí",
                            text: $vm.strSearch)
                     .padding()

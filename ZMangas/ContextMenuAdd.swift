@@ -17,7 +17,7 @@ struct ContextMenuAdd: ViewModifier {
         content
             .contextMenu {
                 let isInMyDB = myMangasVM.isInMyDB(id: manga.id)
-                let title = (isInMyDB ? "Ya está en mi colección" : "Añadir a mi colección \(manga.id)")
+                let title = (isInMyDB ? "Ya está en mi colección" : "Añadir a mi colección")
                 Button(title, systemImage: "heart.fill") {
                     if !isInMyDB {
                         myMangasVM.addManga(manga, ctx: context)

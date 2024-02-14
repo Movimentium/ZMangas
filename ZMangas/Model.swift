@@ -118,6 +118,8 @@ extension Author {
 }
 
 extension MetaData: CustomStringConvertible {
+    static let zero = MetaData(total: 0, page: 0, per: 0)
+    
     var description: String {
         "per: \(per), page: \(page), total: \(total)"
     }

@@ -86,6 +86,6 @@ final class SearchVM: ObservableObject {
     @Published var searchType = SearchType.begins
     @Published var strSearch = ""
     var isSearchBtnEnabled: Bool {
-        strSearch.count > 3
+        strSearch.count > 2
     }
 }

@@ -11,7 +11,7 @@ final class MangasVM: ObservableObject {
     let interactor: DataInteractor
     
     @Published var mangas: [Manga] = []
-    private var metaData = MetaData(total: 0, page: 0, per: 0)
+    private var metaData = MetaData.zero
     
     private var page = 1
     private var isLoadingData = false
@@ -37,7 +37,7 @@ final class MangasVM: ObservableObject {
                     await getMangaByPage()
                 } else if isSearchActive && searchTitleType == .contains {
                     await getMangaSearchingTitleContainsPage()
-                } else {
+                } else if !isSearchActive {
                     await getMangaPage()
                 }
             }
@@ -115,10 +115,9 @@ final class MangasVM: ObservableObject {
         Task {
             if searchType == .contains {
                 await getMangaSearchingTitleContainsPage()
+            } else {  // searchType == .begins
+                await getMangasSearchingTitlenBegins()
             }
-            // TODO: begins
-            
-            
         }
     }
     
@@ -130,6 +129,19 @@ final class MangasVM: ObservableObject {
                 mangas += mangaSearchPage.items
                 metaData = mangaSearchPage.metadata
                 isLoadingData = false
+                isSearchActive = true
+            }
+        } catch {
+            await errorsHandle(error)
+            print(error)
+        }
+    }
+    
+    func getMangasSearchingTitlenBegins() async {
+        do {
+            let mangasBeginsWith = try await interactor.getMangas(beginsWith: searchItem)
+            await MainActor.run {
+                mangas = mangasBeginsWith
                 isSearchActive = true
             }
         } catch {

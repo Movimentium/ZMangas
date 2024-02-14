@@ -12,7 +12,7 @@ final class BestMangasVM: ObservableObject {
     @Published var showAlert = false
     @Published var alertMsg = ""
     @Published var bestMangas: [Manga] = []
-    private var metaData = MetaData(total: 0, page: 0, per: 0)
+    private var metaData = MetaData.zero
     
     private var page = 1
     private var isLoadingData = false
