@@ -49,6 +49,7 @@ struct MyMangasView: View {
                             }
                         }
                     }
+                    .modifier(SelectMyMangaForIPadModifier(myManga: myManga))
                     .swipeActions {
                         Button {
                             withAnimation {
@@ -64,9 +65,7 @@ struct MyMangasView: View {
             }
             .navigationTitle("Mis Mangas")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: MyManga.self) { myManga in
-                DetailView(manga: myManga.manga, dbManga: myManga.dbManga)
-            }
+            .modifier(NavDestinationModifier(sideItem: .myCollection))
         } //NavStack
     }
 }

@@ -13,6 +13,7 @@ final class MyMangasVM: ObservableObject {
     let context: ModelContext
     
     @Published var myMangas: [MyManga] = []
+    @Published var selectedMyMangaForIPad: MyManga?
 
     init(interactor: DataInteractor = Network()) {
         print(Self.self, #function)
@@ -63,6 +64,7 @@ final class MyMangasVM: ObservableObject {
             print(mangaToDelete)
             myMangas.removeAll { $0.id == mangaId }
             context.delete(mangaToDelete)
+            selectedMyMangaForIPad = nil 
         } else {
             print("Error en al borrar")
         }

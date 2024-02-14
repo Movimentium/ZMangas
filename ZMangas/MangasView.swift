@@ -27,10 +27,6 @@ struct MangasView: View {
             .navigationTitle("Mangas")
             .navigationBarTitleDisplayMode(.inline)
             .modifier(NavDestinationModifier(sideItem: .mangas))
-            
-//            .navigationDestination(for: Manga.self) { manga in
-//                DetailView(manga: manga)
-//            }
             .refreshable {
                 vm.getMangas(resetting: true)
             }

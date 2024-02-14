@@ -27,16 +27,6 @@ enum SideItem: String, CaseIterable {
         case .myCollection:  MyMangasView()
         }
     }
-    
-    func toolBar(isGridMode: Binding<Bool>) -> some ViewModifier {
-        switch self {
-        case .mangas:  ToolBarMangas(isGridMode: isGridMode)
-        default:   ToolBarMangas(isGridMode: isGridMode)
-//        case .bestMangas:  BestMangasView()
-//        case .myCollection:  MyMangasView()
-        }
-    }
-
 }
 
 struct iPad16_3View: View {
@@ -69,12 +59,15 @@ struct iPad16_3View: View {
         } detail: {
             switch sideItemSelected {
             case .none, .some(.mangas), .some(.bestMangas):
-                if let seletedManga = vm.selectedMangaForIPad {
-                    DetailView(manga: seletedManga)
+                if let selectedManga = vm.selectedMangaForIPad {
+                    DetailView(manga: selectedManga)
                 }
-            case .some(.myCollection):  MyMangasView()
+            case .some(.myCollection): 
+                if let selectedMyManga = myMangasVM.selectedMyMangaForIPad {
+                    DetailView(manga: selectedMyManga.manga,
+                               dbManga: selectedMyManga.dbManga)
+                }
             }
-
         }
         .navigationSplitViewStyle(.balanced)
     }

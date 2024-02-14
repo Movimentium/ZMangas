@@ -24,9 +24,7 @@ struct BestMangasView: View {
             }
             .navigationTitle("Best Mangas")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: Manga.self) { manga in
-                DetailView(manga: manga)
-            }
+            .modifier(NavDestinationModifier(sideItem: .bestMangas))
             .refreshable {
                 vm.getBestMangas()
             }

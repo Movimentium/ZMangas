@@ -21,6 +21,7 @@ struct MangasGrid: View {
                     NavigationLink(value: manga) {
                         VStack(alignment: .center) {
                             BookCoverView(coverURL: manga.coverURL, mode: .grid)
+                                .modifier(SelectMangaForIPadModifier(manga: manga))
                             Text(manga.title)
                                 .font(.headline)
                         }
