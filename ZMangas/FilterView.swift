@@ -63,6 +63,6 @@ struct FilterView: View {
     NavigationStack {
         FilterView()
             .environmentObject(MangasVM.preview)
-            .environmentObject(SearchVM())
+            .environmentObject(SearchVM.preview)
     }
 }

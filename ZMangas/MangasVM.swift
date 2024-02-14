@@ -24,6 +24,8 @@ final class MangasVM: ObservableObject {
     private func reset() {
         mangas = []
         page = 1
+        isFilterActive = false
+        isSearchActive = false
     }
     
     func loadNextPageIfNeeded(manga: Manga) {
@@ -33,6 +35,8 @@ final class MangasVM: ObservableObject {
             Task {
                 if isFilterActive {
                     await getMangaByPage()
+                } else if isSearchActive && searchTitleType == .contains {
+                    await getMangaSearchingTitleContainsPage()
                 } else {
                     await getMangaPage()
                 }
@@ -49,7 +53,6 @@ final class MangasVM: ObservableObject {
     // MARK: - Mangas ==============================================================
     func getMangas(resetting: Bool = false) {
         if resetting {
-            isFilterActive = false
             reset()
         }
         Task {
@@ -93,6 +96,41 @@ final class MangasVM: ObservableObject {
                 metaData = mangaByPage.metadata
                 isLoadingData = false
                 isFilterActive = true
+            }
+        } catch {
+            await errorsHandle(error)
+            print(error)
+        }
+    }
+    
+    // MARK: - Search Title ===========================================================
+    @Published var isSearchActive = false
+    private(set) var searchTitleType: SearchType = .begins
+    private(set) var searchItem = ""
+    
+    func getMangasTitles(searchType: SearchType, item: String) {
+        searchTitleType = searchType
+        searchItem = item
+        reset()
+        Task {
+            if searchType == .contains {
+                await getMangaSearchingTitleContainsPage()
+            }
+            // TODO: begins
+            
+            
+        }
+    }
+    
+    // .contains is Paginated, .begins NOT
+    func getMangaSearchingTitleContainsPage() async {
+        do {
+            let mangaSearchPage = try await interactor.getMangas(contains: searchItem, page: page)
+            await MainActor.run {
+                mangas += mangaSearchPage.items
+                metaData = mangaSearchPage.metadata
+                isLoadingData = false
+                isSearchActive = true
             }
         } catch {
             await errorsHandle(error)

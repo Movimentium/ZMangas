@@ -46,8 +46,15 @@ struct MangasView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Buscar", systemImage: "magnifyingglass") {
-                        //TODO:
+                    Button {
+                        if vm.isSearchActive {
+                            vm.getMangas(resetting: true)
+                        } else {
+                            searchVM.showSearch = true
+                        }
+                    } label: {
+                        Image(systemName: "magnifyingglass.circle")
+                            .symbolVariant(vm.isSearchActive ? .fill: .none)
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
@@ -61,6 +68,9 @@ struct MangasView: View {
         } //NavStack
         .sheet(isPresented: $searchVM.showFilter) {
             FilterView()
+        }
+        .sheet(isPresented: $searchVM.showSearch) {
+            SearchView()
         }
         .alert("Alerta", isPresented: $vm.showAlert) { } message: {
             Text(vm.alertMsg)

@@ -32,20 +32,12 @@ extension URL {
     }
     
     // MARK: - Searches
-    enum Search: String {
-        case begins = "mangasBeginsWith"
-        case contains = "mangasContains"
-        case author
-        case mangaId = "manga"
-        case custom
-    }
-    
-    static func mangas(search: Search, str: String = "", page: Int? = nil) -> URL {
-        return switch search {
+    static func mangas(searchType: SearchType, str: String = "", page: Int? = nil) -> URL {
+        return switch searchType {
         case .custom:
             api.appending(path: "search/manga").appendingPagingIfNeeded(page: page)
         default:
-            api.appending(path: "search/\(search.rawValue)/\(str)").appendingPagingIfNeeded(page: page)
+            api.appending(path: "search/\(searchType.rawValue)/\(str)").appendingPagingIfNeeded(page: page)
         }
     }
     

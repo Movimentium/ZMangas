@@ -22,3 +22,26 @@ enum FilterBy: String, CaseIterable {
         }
     }
 }
+
+enum SearchType: String {
+    case begins = "mangasBeginsWith"
+    case contains = "mangasContains"
+    case author
+    case mangaId = "manga"
+    case custom
+    
+    static var forTitle: [SearchType] {
+        [.begins, .contains]
+    }
+    
+    var name: String {
+        switch self {
+        case .begins:  "Comienza por"
+        case .contains:  "Contiene"
+        case .author:  "Autor"
+        case .mangaId:  "Id del manga"
+        case .custom:  "Custom"
+        }
+    }
+    
+}

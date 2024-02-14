@@ -57,17 +57,17 @@ struct Network: DataInteractor {
     }
     
     func getMangas(beginsWith str: String) async throws -> [Manga] {
-        try await getJSON(request: .get(url: .mangas(search: .begins, str: str)),
+        try await getJSON(request: .get(url: .mangas(searchType: .begins, str: str)),
                           type: [DTOManga].self).map(\.toModel)
     }
     
     func getMangas(contains str: String, page: Int) async throws -> MangaPage {
-        try await getJSON(request: .get(url: .mangas(search: .contains, str: str, page: page)),
+        try await getJSON(request: .get(url: .mangas(searchType: .contains, str: str, page: page)),
                           type: DTOMangaPage.self).toModel
     }
 
     func getManga(id: String) async throws -> Manga {
-        try await getJSON(request: .get(url: .mangas(search: .mangaId, str: id)),
+        try await getJSON(request: .get(url: .mangas(searchType: .mangaId, str: id)),
                           type: DTOManga.self).toModel
     }
 
@@ -84,7 +84,7 @@ struct Network: DataInteractor {
     }
     
     func getAuthors(by str: String) async throws -> [Author] {
-        try await getJSON(request: .get(url: .mangas(search: .author, str: str)),
+        try await getJSON(request: .get(url: .mangas(searchType: .author, str: str)),
                           type: [DTOAuthor].self).map(\.toModel)
     }
     

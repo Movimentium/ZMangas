@@ -80,4 +80,12 @@ final class SearchVM: ObservableObject {
             return true
         }
     }
+    
+    // MARK: - Search Title
+    @Published var showSearch = false
+    @Published var searchType = SearchType.begins
+    @Published var strSearch = ""
+    var isSearchBtnEnabled: Bool {
+        strSearch.count > 3
+    }
 }
