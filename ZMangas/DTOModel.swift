@@ -33,9 +33,7 @@ struct DTOManga: Codable {
 
     let sypnosis: String?
     let background: String?
-    let mainPicture: String?
-//    let mainPicture: URL?
-    
+    let mainPicture: String?    
     let url: String?
 
     let authors: [DTOAuthor]
