@@ -5,6 +5,9 @@ App para **iPhone** y **iPad** que permite consultar referencias bibiográficas 
 * Si tiene la colección completa.
 
 Consta de un `TabView` con **3 pestañas**:
+<p align="left">
+  <img src="imgRM_TabView.jpg" width="350" title="El TabView">
+</p>
 1. **Mangas**: muestra el listado de mangas que puede _filtrarse_ por **Género**, **Temática**, **Demografía** o **Autor**. Independientemente, puede realizarse la _búsqueda_ por **Título**: que comienze o comienze por una cadena que el usuario escriba.
 2. **Best Mangas**: visualiza los títulos ordenados empezando por los de mayor puntuación.
 3. **Mi colección**: muestra los mangas que el usuario guarda en su coleccción.
