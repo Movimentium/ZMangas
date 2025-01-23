@@ -77,7 +77,7 @@
 		0C805F5C2B718E4F007816FA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		0C805F602B71A65D007816FA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0C805F632B71A6BA007816FA /* MangasVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasVM.swift; sourceTree = "<group>"; };
-		0C817DAB2D4293A30023DE4C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		0C817DAB2D4293A30023DE4C /* README.md */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = README.md; sourceTree = SOURCE_ROOT; };
 		0C823C412B7C3F3E0051BD48 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0CA3EE012B7A9FAD00AB6128 /* BestMangasVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestMangasVM.swift; sourceTree = "<group>"; };
 		0CA3EE032B7AB3D800AB6128 /* MyMangasVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMangasVM.swift; sourceTree = "<group>"; };
