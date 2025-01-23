@@ -1,0 +1,74 @@
+# Xcode
+
+# SO
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.lock
+*.tmp
+*.bak
+
+# Xcode
+*.xcworkspace
+*.xcuserstate
+xcuserdata/
+DerivedData/
+build/
+*.moved-aside
+
+# Archivos del proyecto Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/xcshareddata/xcschemes/*
+!*.xcodeproj/project.xcworkspace/
+
+# Swift Package Manager
+.build/
+Package.resolved
+.idea/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Archivos binarios y de cobertura
+*.xcarchive
+*.bcsymbolmap
+*.gcno
+*.gcda
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Archivos de cache de recursos
+*.appiconset/Icon?.png
+*.launchimage/*.png
+*.imageset/*.png
+
+# Configuraciones locales de workspace
+*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# Archivos de debugging
+*.lldb
+*.dSYM
+*.crash
+
+# Archivos de terceros (si se usan)
+*.framework
+*.dylib
+*.a
+*.dll
+
+# EOF
