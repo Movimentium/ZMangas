@@ -134,6 +134,7 @@
 		0C57D0482B716F1000181AAD = {
 			isa = PBXGroup;
 			children = (
+				0C817DAB2D4293A30023DE4C /* README.md */,
 				0C57D0532B716F1000181AAD /* ZMangas */,
 				0C57D0522B716F1000181AAD /* Products */,
 			);
@@ -150,7 +151,6 @@
 		0C57D0532B716F1000181AAD /* ZMangas */ = {
 			isa = PBXGroup;
 			children = (
-				0C817DAB2D4293A30023DE4C /* README.md */,
 				0C57D0542B716F1000181AAD /* ZMangasApp.swift */,
 				0C1E36FC2B768B790050E94E /* MangasTabView.swift */,
 				0C57D0562B716F1000181AAD /* MangasView.swift */,
