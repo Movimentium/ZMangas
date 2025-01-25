@@ -9,7 +9,7 @@ Consta de un `TabView` con **3 pestañas**:
   <img src="imgs/imgRM_TabView.jpg" width="350" title="El TabView">
 </p>
 
-1. **Mangas**: muestra el listado de mangas que puede _filtrarse_ por **Género**, **Temática**, **Demografía** o **Autor**. Independientemente, puede realizarse la _búsqueda_ por **Título**: que comienze o comienze por una cadena que el usuario escriba.
+1. **Mangas**: muestra el listado de mangas que puede _filtrarse_ por **Género**, **Temática**, **Demografía** o **Autor**. Independientemente, puede realizarse la _búsqueda_ por **Título**: que contenga o comienze por una cadena que el usuario escriba.
 2. **Best Mangas**: visualiza los títulos ordenados empezando por los de mayor puntuación.
 3. **Mi colección**: muestra los mangas que el usuario guarda en su coleccción.
 
@@ -23,7 +23,7 @@ En iPad tiene un funcionamiento similar, salvo que las opciones del _TabView_ es
 
 ## Uso
 * Para **añadir** un manga a su colección, presiónelo hasta que aparezca el _menu  contextual_ y presione _Añadir a mi colección_. Si ya está en su colección aparecerá un mensaje indicándolo.
-* Para **actualizar** los datos sobre un manga guardado, navegue al detalle del manga en _Mi colección_ y varíe los datos.
+* Para **actualizar** los datos sobre un manga guardado, navegue al detalle del manga en _Mi colección_ y modifique los datos.
 * Para **borrar** un manga de su colección, navegue a _Mi colección_, busque el manga que desea eliminar y elimínelo deslizándolo hacia la izquierda.
 * Para **deshacer** una _búsqueda_ o un _filtrado_ deslize el listado hacia abajo cuando esté visualizando el principio de éste (haga un _pull-to-refresh_).
 
